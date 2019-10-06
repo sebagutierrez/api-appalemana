@@ -1,0 +1,12 @@
+{
+  "env": {
+    "node": true,
+    "jest": true
+  },
+  "extends": "airbnb-base",
+  "plugins": ["promise"],
+  "rules": {
+    "arrow-body-style": "off",
+    "import/newline-after-import": "off"
+  }
+}

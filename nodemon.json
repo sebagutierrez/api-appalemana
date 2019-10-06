@@ -1,0 +1,15 @@
+{
+  "restartable": "restart",
+  "verbose": true,
+  "ignore": [
+    "tmp/*",
+    ".git",
+    "node_modules/**/node_modules",
+    "*.md"
+  ],
+  "watch": ["."],
+  "env": {
+    "NODE_ENV": "development"
+  },
+  "ext": "js"
+}
