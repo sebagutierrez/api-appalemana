@@ -1,5 +1,5 @@
-# API Boilerplate Personal para APIs
-> Este es un proyecto de Boilerplate personal para API. Normalmente la BD utilizada es **Real Time Database** o **Cloud Firestore**, pero puede ser otra.
+# API Boilerplate Personal para APIs (Relacional)
+> Este es un proyecto de Boilerplate personal para APIs Relacionales
 
 ## Features
 - :package: Docker Ready
