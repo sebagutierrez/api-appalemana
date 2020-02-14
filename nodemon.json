@@ -5,7 +5,8 @@
     "tmp/*",
     ".git",
     "node_modules/**/node_modules",
-    "*.md"
+    "*.md",
+    "data/pg_stat_tmp"
   ],
   "watch": ["."],
   "env": {

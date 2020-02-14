@@ -1,3 +1,4 @@
+/*
 module.exports = {
   index: (req, res) => {
     return res.status(200).json({
@@ -5,4 +6,11 @@ module.exports = {
       currentLang: 'es_CL',
     });
   },
+};
+*/
+
+const controlador_prueba = require('./controlador_prueba');
+
+module.exports = {
+  controlador_prueba,
 };

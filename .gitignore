@@ -6,6 +6,8 @@ Icon?
 # Application
 .env
 .data
+data
+.vscode
 
 # Windows
 Thumbs.db
@@ -21,6 +23,7 @@ node_modules
 package-lock.json
 *.log
 *.gz
+
 
 # Coveralls
 coverage

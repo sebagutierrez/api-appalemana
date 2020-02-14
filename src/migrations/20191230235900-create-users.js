@@ -29,7 +29,7 @@ module.exports = {
         defaultValue: '',
       },
       is_enabled: {
-        type: Sequelize.TINYINT(1),
+        type: Sequelize.INTEGER,
         allowNull: false,
         defaultValue: 1,
       },

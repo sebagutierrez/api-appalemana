@@ -14,22 +14,42 @@ services:
       - 9229:9229
     command: npm run start:dev
     networks:
-      - api-boilerplate
-  mysql:
-    container_name: api-boilerplate-db
-    image: mysql:5.7
+      - test-net
+
+  mydb:
     restart: always
-    environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: database
-      TZ: America/Santiago
-    ports:
-      - 3306:3306
-    networks:
-      - api-boilerplate
-    command: mysqld --sql_mode=""
+    image: postgres
     volumes:
-      - ./.data/db:/var/lib/mysql
+      - ./data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: data
+    ports:
+      - 5433:5432/tcp
+    networks:
+      - test-net
+
+  pgadmin:
+    restart: always
+    container_name: api-boilerplate-pgadmin
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-pgadmin4@pgadmin.org}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-admin}
+    volumes:
+       - pgadmin:/root/.pgadmin
+    ports:
+      - "${PGADMIN_PORT:-5050}:80"
+    networks:
+      - test-net
+
 networks:
-  api-boilerplate:
+  test-net:
     driver: bridge
+
+volumes:
+  pgadmin:
+    driver: local
+  db-data:
+    driver: local
