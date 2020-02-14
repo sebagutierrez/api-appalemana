@@ -10,18 +10,21 @@ const conceptosIds = await CasHiba.findAll({
 
 
 module.exports = {
-    list(req, res) {
-        return CasHiba.findAll({
-            include: [{
-                model: HibaSnomed,
-                as: 'hiba_snomed'
-                }, {
-                model: Transitiva,
-                as: 'transitiva'
-                }],
-        })
-        .then((students) => res.status(200).send(students))
-        .catch((error) => { res.status(400).send(error); });   
+    async list(req, res) {
+        try {
+            const cas_hiba_table = await CasHiba.findAll({
+                attributes: ['concepto_id', 'description_nombre', 'description_id', 'concept_id_HIBA', 'tipo_termino', 'termino_preferido'],
+                limit: 10
+            });
+            res.json({
+                data: cas_hiba_table
+            })
+        } catch (error) {
+            res.json({
+                data: {},
+                message: error
+            })
+        };
     }   
 }
 

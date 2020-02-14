@@ -22,9 +22,9 @@ services:
     volumes:
       - ./data:/var/lib/postgresql/data
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: data
+      $POSTGRES_USER: postgres
+      $POSTGRES_PASSWORD: postgres
+      $POSTGRES_DB: data
     ports:
       - 5433:5432/tcp
     networks:
