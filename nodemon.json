@@ -6,7 +6,7 @@
     ".git",
     "node_modules/**/node_modules",
     "*.md",
-    "data/pg_stat_tmp"
+    "data"
   ],
   "watch": ["."],
   "env": {

@@ -1,5 +1,5 @@
-const controlador_prueba = require('./controlador_prueba');
+const buscar_termino_preferido = require('./buscar-termino-preferido');
 
 module.exports = {
-  controlador_prueba,
+  buscar_termino_preferido,
 };
