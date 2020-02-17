@@ -1,5 +1,7 @@
-const buscar_termino_preferido = require('./buscar-termino-preferido');
-
 module.exports = {
-  buscar_termino_preferido,
+  index: (req, res) => {
+    return res.status(200).json({
+      message: 'API Buscador Snomed',
+    });
+  }
 };

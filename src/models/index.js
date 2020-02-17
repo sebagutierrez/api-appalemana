@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const basename = path.basename(__filename);
 const db = {};
-const Sequelize = require('sequelize');
+const { Sequelize, QueryTypes } = require('sequelize');
 const sequelize = require('../config/database');
 
 // Procesa todos los modelos
@@ -22,5 +22,6 @@ Object.keys(db).forEach((modelName) => {
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
+db.QueryTypes = QueryTypes;
 
 module.exports = db;

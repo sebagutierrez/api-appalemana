@@ -5,6 +5,7 @@ require('./config/environment');
 
 // Importación de rutas
 const indexRouter = require('./routes/index.routes');
+const buscarRouter = require('./routes/buscar.routes');
 
 // Importación de modulos personalizados
 const swaggerUi = require('./core/swagger');
@@ -22,5 +23,6 @@ app.use(helmet());
 
 // Declaración de rutas
 app.use('/', indexRouter);
+app.use('/buscar', buscarRouter);
 
 module.exports = app;

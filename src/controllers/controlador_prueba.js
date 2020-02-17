@@ -1,3 +1,6 @@
+/* BORRAR ESTO*/
+
+
 const CasHiba = require('../models').CasHiba;
 const HibaSnomed = require('../models').HibaSnomed;
 const Transitiva = require('../models').Transitiva;

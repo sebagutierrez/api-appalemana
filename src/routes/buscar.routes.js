@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 require('dotenv').config();
 
-const indexController = require('../controllers/index.controller');
+const buscarController = require('../controllers/buscar.controller');
 
 /**
  * @swagger
@@ -10,6 +10,6 @@ const indexController = require('../controllers/index.controller');
  *    get:
  *      description: Initial endpoint
  */
-router.get('/', indexController.index);
+router.get('/:termino', buscarController.buscarTerminoPreferido);
 
 module.exports = router;
