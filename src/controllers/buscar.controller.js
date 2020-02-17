@@ -6,7 +6,7 @@ const models = require('../models/index');
 module.exports = {
     buscarTerminoPreferido: async (req, res) => {
         try {
-            const query_termino_preferido = await models.CasHiba.findAll({
+            const query_termino_preferido = await models.CasHiba.findAll({ // Búsqueda de término preferido.
                 attributes: [
                     'termino_preferido',
                     'concept_id_HIBA',
@@ -25,12 +25,12 @@ module.exports = {
                 return;
             } 
 
-            const query_padres_termino_preferido = await models.sequelize.query(
+            const query_padres_termino_preferido = await models.sequelize.query( //Búsqueda de padres del término preferido
 
                `SELECT DISTINCT termino_preferido, "concept_id_HIBA" 
                 FROM cas_hiba, hiba_snomed, (SELECT DISTINCT padre 
                                             FROM cas_hiba, hiba_snomed, transitiva 
-                                            WHERE termino_preferido='${ req.params.termino.toUpperCase()}' 
+                                            WHERE termino_preferido='${ req.params.termino.toUpperCase() }' 
                                             AND "concept_id_HIBA"="conceptid_HIBA" 
                                             AND "conceptidSN"=hijo 
                                             AND es_directo=true) 
@@ -38,14 +38,36 @@ module.exports = {
                 WHERE padre="conceptidSN" 
                 AND "concept_id_HIBA"="conceptid_HIBA" 
                 AND tipo_termino='Preferido'`,
-            { 
-                type: models.QueryTypes.SELECT 
-            });
+
+                { 
+                    type: models.QueryTypes.SELECT 
+                }
+            );
+
+            const query_hijos_termino_preferido = await models.sequelize.query(
+
+               `SELECT DISTINCT termino_preferido, "concept_id_HIBA" 
+                FROM cas_hiba, hiba_snomed, (SELECT DISTINCT hijo
+                                             FROM cas_hiba, hiba_snomed, transitiva 
+                                             WHERE termino_preferido='${ req.params.termino.toUpperCase() }' 
+                                             AND "concept_id_HIBA"="conceptid_HIBA" 
+                                             AND "conceptidSN"=padre 
+                                             AND es_directo=true) 
+                                             AS tabla_id_h 
+                WHERE hijo="conceptidSN" 
+                AND "concept_id_HIBA"="conceptid_HIBA" 
+                AND tipo_termino='Preferido'`,
+
+                {
+                    type: models.QueryTypes.SELECT
+                }
+            );
             
             return res.status(200).json({
                 data: {
                     query_padres_termino_preferido,
-                    query_termino_preferido
+                    query_termino_preferido,
+                    query_hijos_termino_preferido
                 },
                 message: 'Busqueda realizada correctamente!',
             });
