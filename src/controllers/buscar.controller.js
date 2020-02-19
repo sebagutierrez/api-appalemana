@@ -25,7 +25,7 @@ module.exports = {
                 return;
             } 
 
-            const query_padres_termino_preferido = await models.sequelize.query( //Búsqueda de padres del término preferido
+            const query_padres_termino_preferido = await models.sequelize.query( // Búsqueda de padres del término preferido
 
                `SELECT DISTINCT termino_preferido, "concept_id_HIBA" 
                 FROM cas_hiba, hiba_snomed, (SELECT DISTINCT padre 
@@ -44,7 +44,7 @@ module.exports = {
                 }
             );
 
-            const query_hijos_termino_preferido = await models.sequelize.query(
+            const query_hijos_termino_preferido = await models.sequelize.query( // Búsqueda de hijos del término preferido
 
                `SELECT DISTINCT termino_preferido, "concept_id_HIBA" 
                 FROM cas_hiba, hiba_snomed, (SELECT DISTINCT hijo
