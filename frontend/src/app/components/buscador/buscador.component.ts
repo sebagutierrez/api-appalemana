@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-buscador',
   templateUrl: './buscador.component.html',
@@ -17,8 +18,12 @@ export class BuscadorComponent implements OnInit {
 
   onNewSearch() {
     this.searchInput = this.enteredValue;
-    //this.router.navigateByUrl(`/resultado/${this.searchInput}`);
-    this.router.navigateByUrl(`/results/${this.searchInput}`);
+
+
+
+    this.router.navigateByUrl(`/results/${this.enteredValue}`);
+
+
   }
 
   ngOnInit(): void {

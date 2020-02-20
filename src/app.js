@@ -15,6 +15,9 @@ const app = express();
 // HABILITA CORS
 app.use(cors());
 
+
+
+
 // Middlewares
 app.use('/api-docs', swaggerUi.swaggerUi.serve, swaggerUi.swaggerUi.setup(swaggerUi.specs));
 app.use(express.json());
@@ -23,6 +26,6 @@ app.use(helmet());
 
 // Declaración de rutas
 app.use('/', indexRouter);
-app.use('/buscar', buscarRouter);
+app.use('/results', buscarRouter);
 
 module.exports = app;
