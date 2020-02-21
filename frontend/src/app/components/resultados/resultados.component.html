@@ -1,1 +1,38 @@
-<p>resultados working!</p>
+<!--  <p>{{ resultados.data.query_padres_termino_preferido[0].termino_preferido | json}}</p> -->
+
+
+<div class="padres" *ngIf="resultados && resultados.data.query_padres_termino_preferido.length != 0">
+    <ul>
+        <h2>
+            Padres
+        </h2>
+
+        <li *ngFor="let padre of resultados.data.query_padres_termino_preferido" href="">
+            <a href="http://localhost:4200/results/{{padre.termino_preferido}}">{{ padre.termino_preferido }}</a>
+        </li>
+    </ul>
+</div>
+
+<div class="termino" *ngIf="resultados && resultados.data.query_termino_preferido.length != 0">
+    <ul>
+        <h2>
+            Término
+        </h2>
+
+        <li *ngFor="let termino of resultados.data.query_termino_preferido">
+            <a href="http://localhost:4200/results/{{termino.termino_preferido}}">{{ termino.termino_preferido }}</a>
+        </li>
+    </ul>
+</div>
+
+<div class="hijos" *ngIf="resultados && resultados.data.query_hijos_termino_preferido.length != 0">
+    <ul>
+        <h2>
+            Hijos
+        </h2>
+
+        <li *ngFor="let hijo of resultados.data.query_hijos_termino_preferido">
+            <a href="http://localhost:4200/results/{{hijo.termino_preferido}}">{{ hijo.termino_preferido }}</a>
+        </li>
+    </ul>
+</div>

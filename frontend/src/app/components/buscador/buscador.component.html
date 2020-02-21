@@ -1,5 +1,9 @@
 <div>
-    <input type="text" [(ngModel)]="enteredValue">
-    <button (click)="onNewSearch()" type='button'>Search</button>
+    <input autofocus (keyup.enter)="onNewSearch()" type="text" placeholder="Ingrese algún término clínico"
+        [(ngModel)]="enteredValue">
+
+    <button (click)="onNewSearch()" type='button'>
+        Search
+    </button>
 </div>
 <hr>

@@ -17,7 +17,7 @@ export class BuscadorComponent implements OnInit {
   ) { }
 
   onNewSearch() {
-    this.searchInput = this.enteredValue;
+    this.searchInput = this.enteredValue.toUpperCase();
 
 
 

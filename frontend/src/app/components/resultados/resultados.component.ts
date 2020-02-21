@@ -11,6 +11,7 @@ import { ResultadosObjeto } from './resultados-objeto.model';
 })
 export class ResultadosComponent implements OnInit {
   private routeParams: Params;
+
   resultados: ResultadosObjeto;
 
 
@@ -27,8 +28,12 @@ export class ResultadosComponent implements OnInit {
       this.routeParams = params.searchInput;
 
       this.resultadosService.getResults(this.routeParams)
-        .subscribe(data => {
-          console.log(data);
+        .subscribe((data: ResultadosObjeto) => {
+          this.resultados = data;
+
+
+
+          console.log(this.resultados);
         });
     });
 
