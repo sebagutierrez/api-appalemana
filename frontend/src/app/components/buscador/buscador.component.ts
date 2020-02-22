@@ -9,7 +9,6 @@ import { Router } from '@angular/router';
 })
 export class BuscadorComponent implements OnInit {
 
-  enteredValue = '';
   searchInput = '';
 
   constructor(
@@ -17,13 +16,9 @@ export class BuscadorComponent implements OnInit {
   ) { }
 
   onNewSearch() {
-    this.searchInput = this.enteredValue.toUpperCase();
+    this.searchInput.toUpperCase();
 
-
-
-    this.router.navigateByUrl(`/results/${this.enteredValue}`);
-
-
+    this.router.navigateByUrl(`/results/${this.searchInput}`);
   }
 
   ngOnInit(): void {

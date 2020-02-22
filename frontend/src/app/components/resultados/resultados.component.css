@@ -1,17 +1,29 @@
-/* .padres {
-    display: flex;
-    float: left;
-    width: 400px;
+ .padres {
+    width:  33%;
+    border: 1px solid rgb(71, 71, 71);
+    padding-right: 1rem;
+    margin: 1rem;
 }
 
-.padres {
-    display: flex;
-    float: left;
-    width: 400px;
+.termino {
+    width: 33%;
+    border: 1px solid rgb(71, 71, 71);
+    padding-right: 1rem;
+    margin: 1rem;
 }
 
 .hijos {
+    width: 33%;
+    border: 1px solid rgb(71, 71, 71);
+    padding-right: 1rem;
+    margin: 1rem;
+}
+
+.links {
+    text-decoration: none;
+    color: rgb(0, 52, 163);
+}
+
+.container {
     display: flex;
-    float: left;
-    width: 400px;
-}  */
+}
