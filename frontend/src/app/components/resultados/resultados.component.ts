@@ -13,6 +13,7 @@ export class ResultadosComponent implements OnInit {
 
   private routeParams: Params;
   resultados: ResultadosObjeto;
+  isDataLoaded = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -29,16 +30,14 @@ export class ResultadosComponent implements OnInit {
       this.resultadosService.getResults(this.routeParams)
         .subscribe((data: ResultadosObjeto) => {
 
-          // Hacer esta verificación para que no tire error "ctx.resultados.data.query_padres_termino_preferido is undefined" en el HTML.
-          /* if (!data.data.query_termino_preferido) {
-            this.resultados.message = "Not found";
-            return;
-          } */
 
+          if (!Object.keys(data.data).length) {
+            this.router.navigateByUrl('/');
+          }
           this.resultados = data;
-
+          this.isDataLoaded = true;
           console.log(this.resultados); // Debug purposes
-        });
+        })
     });
   }
 }

@@ -16,9 +16,11 @@ export class BuscadorComponent implements OnInit {
   ) { }
 
   onNewSearch() {
-    this.searchInput.toUpperCase();
+    if (this.searchInput.length) {
+      this.searchInput.toUpperCase()
+      this.router.navigateByUrl(`/results/${this.searchInput}`);
+    }
 
-    this.router.navigateByUrl(`/results/${this.searchInput}`);
   }
 
   ngOnInit(): void {

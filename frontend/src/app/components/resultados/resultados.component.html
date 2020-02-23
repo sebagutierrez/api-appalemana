@@ -1,7 +1,9 @@
 <!--  <p>{{ resultados.data.query_padres_termino_preferido[0].termino_preferido | json}}</p> -->
 
 
-<div class="container" *ngIf="resultados.data.query_termino_preferido; else notFound">
+
+
+<div class="container" *ngIf="isDataLoaded; else notFound">
     <div class="padres">
         <ul>
             <h2>
@@ -44,6 +46,9 @@
     </div>
 </div>
 
+
 <ng-template #notFound>
-    <div *ngIf="router.navigateByUrl('/')"></div>
+    <div>
+        <h2>Cargando...</h2>
+    </div>
 </ng-template>
