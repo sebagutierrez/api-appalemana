@@ -3,7 +3,7 @@
 
 
 
-<div class="container" *ngIf="isDataLoaded; else notFound">
+<div class="container" *ngIf="isDataLoaded; else loading">
     <div class="padres">
         <ul>
             <h2>
@@ -47,7 +47,7 @@
 </div>
 
 
-<ng-template #notFound>
+<ng-template #loading>
     <div>
         <h2>Cargando...</h2>
     </div>

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { ResultadosService } from '../../services/resultados.service';
-import { ResultadosObjeto } from './resultados-objeto.model';
+import { Resultado } from './resultados.model';
 
 
 @Component({
@@ -12,7 +12,7 @@ import { ResultadosObjeto } from './resultados-objeto.model';
 export class ResultadosComponent implements OnInit {
 
   private routeParams: Params;
-  resultados: ResultadosObjeto;
+  resultados: Resultado;
   isDataLoaded = false;
 
   constructor(
@@ -28,9 +28,9 @@ export class ResultadosComponent implements OnInit {
       this.routeParams = params.searchInput;
 
       this.resultadosService.getResults(this.routeParams)
-        .subscribe((data: ResultadosObjeto) => {
+        .subscribe((data: Resultado) => {
 
-
+          // Si data está vacío
           if (!Object.keys(data.data).length) {
             this.router.navigateByUrl('/');
           }

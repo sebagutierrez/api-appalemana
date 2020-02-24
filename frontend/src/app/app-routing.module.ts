@@ -6,8 +6,6 @@ import { ResultadosComponent } from './components/resultados/resultados.componen
 
 
 const routes: Routes = [
-  //{ path: '', redirectTo: 'buscar', pathMatch: 'full' },
-
   { path: 'results/:searchInput', component: ResultadosComponent }
 ];
 
