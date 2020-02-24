@@ -6,6 +6,7 @@ import { ResultadosComponent } from './components/resultados/resultados.componen
 
 
 const routes: Routes = [
+  { path: '', component: BuscadorComponent },
   { path: 'results/:searchInput', component: ResultadosComponent }
 ];
 

@@ -1,8 +1,3 @@
-<!--  <p>{{ resultados.data.query_padres_termino_preferido[0].termino_preferido | json}}</p> -->
-
-
-
-
 <div class="container" *ngIf="isDataLoaded; else loading">
     <div class="padres">
         <ul>
@@ -48,7 +43,7 @@
 
 
 <ng-template #loading>
-    <div>
-        <h2>Cargando...</h2>
-    </div>
+    <span>
+        <p class="loading">Cargando...</p>
+    </span>
 </ng-template>

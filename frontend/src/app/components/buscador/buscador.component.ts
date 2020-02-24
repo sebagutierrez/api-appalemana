@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
+
 
 @Component({
   selector: 'app-buscador',
@@ -10,6 +12,8 @@ import { Router } from '@angular/router';
 export class BuscadorComponent implements OnInit {
 
   searchInput = '';
+
+  faSearch = faSearch;
 
   constructor(
     private router: Router

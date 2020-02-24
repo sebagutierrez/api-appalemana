@@ -1,0 +1,33 @@
+.searchBar {
+    display: flex;
+    align-items: center;
+    margin: 1rem;
+    justify-content: center;
+}
+
+input {
+    border: 3px solid #94d3ac;
+    font-size: 18px;
+    border-radius: 5px 0 0 5px;
+    text-indent: 10px;
+}
+
+::placeholder {
+    font-size: 15px;
+    margin-left: 10px;
+}
+
+fa-icon {
+    margin: 5px;
+    font-size: 1.333em;
+    color: white;
+}
+
+.searchButton {
+    border: 3px solid;
+    border-color: #94d3ac;
+    background: #94d3ac;
+    border-style: solid;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+}

@@ -1,0 +1,9 @@
+mat-toolbar {
+    background-color: #655c56;
+}
+
+.title {
+    color: #b6ffd2;
+    font-weight: bold;
+    font-size: 25px;
+}

@@ -1,9 +1,8 @@
-<div>
-    <input autofocus (keyup.enter)="onNewSearch()" type="text" placeholder="Ingrese algún término clínico"
-        [(ngModel)]="searchInput">
+<div class="searchBar">
+    <input matInput autofocus (keyup.enter)="onNewSearch()" size="30" type="text"
+        placeholder="Ingrese un término clínico" [(ngModel)]="searchInput">
 
-    <button (click)="onNewSearch()" type='button'>
-        Search
+    <button class="searchButton" (click)="onNewSearch()" type='button'>
+        <fa-icon [icon]="faSearch"></fa-icon>
     </button>
 </div>
-<hr>
