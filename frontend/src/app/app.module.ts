@@ -13,7 +13,9 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { MatButtonModule } from '@angular/material/button';
 
 
 
@@ -32,6 +34,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     FontAwesomeModule,
     MatToolbarModule,
     MatCheckboxModule,
+    MatProgressBarModule,
+    MatButtonModule,
     HttpClientModule,
   ],
   providers: [],

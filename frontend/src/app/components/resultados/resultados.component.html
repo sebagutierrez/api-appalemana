@@ -1,5 +1,9 @@
-<div class="barraOpciones">
+<ng-template #loading>
+    <mat-progress-bar mode="query"></mat-progress-bar>
+</ng-template>
 
+<div class="barraOpciones">
+    <button mat-raised-button class="botonAgregarCohorte" (click)="addToChecklist()">Agregar a cohorte</button>
 </div>
 
 <div class="container" *ngIf="isDataLoaded; else loading">
@@ -10,7 +14,7 @@
             </h2>
 
             <li *ngFor="let padre of resultados.data.query_padres_termino_preferido">
-                <mat-checkbox>
+                <mat-checkbox class="checkboxTermino" [(ngModel)]="padre.checked">
                     <a class="links"
                         href="http://localhost:4200/results/{{padre.termino_preferido}}">{{ padre.termino_preferido }}</a>
                 </mat-checkbox>
@@ -25,7 +29,7 @@
             </h2>
 
             <li *ngFor="let termino of resultados.data.query_termino_preferido">
-                <mat-checkbox>
+                <mat-checkbox class="checkboxTermino" [(ngModel)]="termino.checked">
                     <a class="links"
                         href="http://localhost:4200/results/{{termino.termino_preferido}}">{{ termino.termino_preferido }}</a>
                     <p>ID: {{ termino.concept_id_HIBA }}</p>
@@ -41,7 +45,7 @@
             </h2>
 
             <li *ngFor="let hijo of resultados.data.query_hijos_termino_preferido">
-                <mat-checkbox>
+                <mat-checkbox class="checkboxTermino" [(ngModel)]="hijo.checked">
                     <a class="links"
                         href="http://localhost:4200/results/{{hijo.termino_preferido}}">{{ hijo.termino_preferido }}</a>
                 </mat-checkbox>
@@ -49,10 +53,3 @@
         </ul>
     </div>
 </div>
-
-
-<ng-template #loading>
-    <span>
-        <p class="loading">Cargando...</p>
-    </span>
-</ng-template>
