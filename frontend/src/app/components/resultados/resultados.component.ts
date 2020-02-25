@@ -4,6 +4,7 @@ import { ResultadosService } from '../../services/resultados.service';
 import { Resultado } from './resultados.model';
 
 
+
 @Component({
   selector: 'app-resultados',
   templateUrl: './resultados.component.html',

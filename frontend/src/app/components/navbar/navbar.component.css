@@ -6,4 +6,5 @@ mat-toolbar {
     color: #b6ffd2;
     font-weight: bold;
     font-size: 25px;
+    cursor: pointer;
 }

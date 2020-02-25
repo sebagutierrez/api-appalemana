@@ -1,3 +1,7 @@
+<div class="barraOpciones">
+
+</div>
+
 <div class="container" *ngIf="isDataLoaded; else loading">
     <div class="padres">
         <ul>
@@ -5,9 +9,11 @@
                 Padres ({{ resultados.data.query_padres_termino_preferido.length }})
             </h2>
 
-            <li *ngFor="let padre of resultados.data.query_padres_termino_preferido" href="">
-                <a class="links"
-                    href="http://localhost:4200/results/{{padre.termino_preferido}}">{{ padre.termino_preferido }}</a>
+            <li *ngFor="let padre of resultados.data.query_padres_termino_preferido">
+                <mat-checkbox>
+                    <a class="links"
+                        href="http://localhost:4200/results/{{padre.termino_preferido}}">{{ padre.termino_preferido }}</a>
+                </mat-checkbox>
             </li>
         </ul>
     </div>
@@ -19,11 +25,12 @@
             </h2>
 
             <li *ngFor="let termino of resultados.data.query_termino_preferido">
-                <a class="links"
-                    href="http://localhost:4200/results/{{termino.termino_preferido}}">{{ termino.termino_preferido }}</a>
-                <p>ID: {{ termino.concept_id_HIBA }}</p>
+                <mat-checkbox>
+                    <a class="links"
+                        href="http://localhost:4200/results/{{termino.termino_preferido}}">{{ termino.termino_preferido }}</a>
+                    <p>ID: {{ termino.concept_id_HIBA }}</p>
+                </mat-checkbox>
             </li>
-
         </ul>
     </div>
 
@@ -34,8 +41,10 @@
             </h2>
 
             <li *ngFor="let hijo of resultados.data.query_hijos_termino_preferido">
-                <a class="links"
-                    href="http://localhost:4200/results/{{hijo.termino_preferido}}">{{ hijo.termino_preferido }}</a>
+                <mat-checkbox>
+                    <a class="links"
+                        href="http://localhost:4200/results/{{hijo.termino_preferido}}">{{ hijo.termino_preferido }}</a>
+                </mat-checkbox>
             </li>
         </ul>
     </div>
