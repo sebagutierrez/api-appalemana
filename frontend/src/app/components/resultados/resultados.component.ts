@@ -47,31 +47,63 @@ export class ResultadosComponent implements OnInit {
 
 
   // Agrega a la checklist (lista de cohortes) todos los checkeados cuando se clickea el botón.
-  // FALTA: eliminar de la checklist si se deselecciona y se vuelve a clickear el botón. POR AHORA se está limpiando la lista en cada "agregar cohorte".
+  // FALTA: que el array cohortes no se limpie cuando se cambia de ruta. (HINT: You should store your data in a service instead of in the component property)
   // A FUTURO: hacer esto con observables, así se agrega automáticamente si se selecciona/deselecciona un término.
   addToCohorte() {
 
-    this.cohorte = [];
 
     if (this.resultados.data.query_termino_preferido) {
+
       this.resultados.data.query_padres_termino_preferido.forEach(termino => {
         if (termino.checked && !this.cohorte.includes(termino)) {
+
           this.cohorte.push(termino);
-          console.log("Término agregado a checklist --> " + termino.termino_preferido);
+
+        } else if (!termino.checked && this.cohorte.includes(termino)) {
+
+          this.removeFromCohorte(termino);
+
         }
       });
 
-      if (this.resultados.data.query_termino_preferido[0].checked && !this.cohorte.includes(this.resultados.data.query_termino_preferido[0])) {
+      if (this.resultados.data.query_termino_preferido[0].checked &&
+        !this.cohorte.includes(this.resultados.data.query_termino_preferido[0])) {
+
         this.cohorte.push(this.resultados.data.query_termino_preferido[0]);
-        console.log("Término agregado a checklist --> " + this.resultados.data.query_termino_preferido[0].termino_preferido);
+
+      } else if (!this.resultados.data.query_termino_preferido[0].checked &&
+        this.cohorte.includes(this.resultados.data.query_termino_preferido[0])) {
+
+        this.removeFromCohorte(this.resultados.data.query_termino_preferido[0]);
+
       }
 
       this.resultados.data.query_hijos_termino_preferido.forEach(termino => {
         if (termino.checked && !this.cohorte.includes(termino)) {
+
           this.cohorte.push(termino);
-          console.log("Término agregado a checklist --> " + termino.termino_preferido);
+
+        } else if (!termino.checked && this.cohorte.includes(termino)) {
+
+          this.removeFromCohorte(termino);
+
         }
       });
+    }
+
+    console.log("Array cohortes:");
+
+    this.cohorte.forEach(element => {
+      console.log(element.termino_preferido);
+    });
+
+  }
+
+  // Elimina un término de la cohorte.
+  removeFromCohorte(termino) {
+    const index = this.cohorte.indexOf(termino);
+    if (index !== -1) {
+      this.cohorte.splice(index, 1);
     }
   }
 

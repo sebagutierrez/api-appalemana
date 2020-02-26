@@ -2,7 +2,7 @@ const models = require('../models/index');
 
 // Barra de búsqueda principal.
 // A través de un término, se busca en la tabla cas_hiba el primer término preferido.
-// Debe retornar un objeto con arreglos de padres e hijos del término buscado, además del mismo término y sus id.
+// Debe retornar un objeto con arreglos de padres e hijos del término buscado, además del mismo término, sus id y un mensaje de respuesta.
 module.exports = {
     buscarTerminoPreferido: async (req, res) => {
         try {
@@ -23,14 +23,14 @@ module.exports = {
                     message: 'Término no encontrado en la base de datos',
                 });
                 return;
-            } 
+            }
 
             const query_padres_termino_preferido = await models.sequelize.query( // Búsqueda de padres del término preferido
 
-               `SELECT DISTINCT termino_preferido, "concept_id_HIBA" 
+                `SELECT DISTINCT termino_preferido, "concept_id_HIBA" 
                 FROM cas_hiba, hiba_snomed, (SELECT DISTINCT padre 
                                             FROM cas_hiba, hiba_snomed, transitiva 
-                                            WHERE termino_preferido='${ req.params.termino.toUpperCase() }' 
+                                            WHERE termino_preferido='${ req.params.termino.toUpperCase()}' 
                                             AND "concept_id_HIBA"="conceptid_HIBA" 
                                             AND "conceptidSN"=hijo 
                                             AND es_directo=true) 
@@ -39,17 +39,17 @@ module.exports = {
                 AND "concept_id_HIBA"="conceptid_HIBA" 
                 AND tipo_termino='Preferido'`,
 
-                { 
-                    type: models.QueryTypes.SELECT 
+                {
+                    type: models.QueryTypes.SELECT
                 }
             );
 
             const query_hijos_termino_preferido = await models.sequelize.query( // Búsqueda de hijos del término preferido
 
-               `SELECT DISTINCT termino_preferido, "concept_id_HIBA" 
+                `SELECT DISTINCT termino_preferido, "concept_id_HIBA" 
                 FROM cas_hiba, hiba_snomed, (SELECT DISTINCT hijo
                                              FROM cas_hiba, hiba_snomed, transitiva 
-                                             WHERE termino_preferido='${ req.params.termino.toUpperCase() }' 
+                                             WHERE termino_preferido='${ req.params.termino.toUpperCase()}' 
                                              AND "concept_id_HIBA"="conceptid_HIBA" 
                                              AND "conceptidSN"=padre 
                                              AND es_directo=true) 
@@ -62,7 +62,7 @@ module.exports = {
                     type: models.QueryTypes.SELECT
                 }
             );
-            
+
             return res.status(200).json({
                 data: {
                     query_padres_termino_preferido,
