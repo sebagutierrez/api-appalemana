@@ -5,15 +5,30 @@
     width: 100;
 }
 
-.botonAgregarCohorte {
-    margin: 5px;
-    color: rgb(179, 255, 173);
-    background-color: rgb(0, 165, 0);
-    font-weight: bold;
+.botonesCohorte {
+    display: flex;
+    align-content: center;
+    margin-left: 10px;
 }
 
 .botonVerCohorte {
     margin: 5px;
+    background-color: rgb(72, 167, 85);
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+}
+
+.botonEliminarCohorte {
+    margin: 5px;
+    width: 1em;
+    background-color: rgb(43, 255, 0);
+}
+
+fa-icon {
+    margin: 12px;
+    font-size: 1.5rem;
+    color:red;
+    cursor: pointer;
 }
 
 .padres {
@@ -25,9 +40,26 @@
     box-shadow: 6px 6px 6px -5px rgba(92, 92, 92, 0.75);
 }
 
+.titleRow {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.botonSelectAll {
+    display: table-cell;
+    vertical-align: middle;
+    margin-right: 10px;
+    height: 2rem;
+    /* align-content: center; */
+    font-weight: bold;
+    color: white;
+    background-color: rgb(152, 115, 185);
+}
+
 .termino {
     width: 33%;
-    border: 1px solid #35a560c7;
+    border: 1px solid #969696c7;
     border-radius: 7px;
     padding-right: 1rem;
     margin: 1rem;
@@ -60,7 +92,6 @@ p.loading {
 
 .container {
     display: flex;
-    /* margin-top: 0.5em; */
 }
 
 ul {

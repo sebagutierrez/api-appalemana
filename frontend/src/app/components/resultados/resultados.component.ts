@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+
 import { ResultadosService } from '../../services/resultados.service';
 import { CohortesService } from '../../services/cohortes.service';
+
 import { Resultado } from './resultados.model';
+
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
 
 
 
@@ -17,6 +21,7 @@ export class ResultadosComponent implements OnInit {
   resultados: Resultado;
   isDataLoaded = false;
 
+  faTrash = faTrash;
 
 
   // Arreglar acá: nombres route y router deben diferenciarse mejor; el atributo routeParams no es necesario.

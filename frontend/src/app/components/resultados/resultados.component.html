@@ -2,17 +2,26 @@
     <mat-progress-bar mode="query"></mat-progress-bar>
 </ng-template>
 
-<div class="barraOpciones">
-    <button mat-raised-button class="botonVerCohorte" (click)="showCohorte()">Ver cohorte</button>
-    <!-- <button mat-raised-button class="botonAgregarCohorte" (click)="addToCohorte()">Agregar a cohorte</button> -->
+<div class="barraOpciones" *ngIf="isDataLoaded; else loading">
+    <div class="botonesCohorte">
+        <button mat-raised-button class="botonVerCohorte" (click)="showCohorte()">Ver cohorte</button>
+        <fa-icon [icon]="faTrash" (click)="cohorteService.removeAllFromCohorte()"></fa-icon>
+    </div>
 </div>
 
 <div class="container" *ngIf="isDataLoaded; else loading">
     <div class="padres">
         <ul>
-            <h2>
-                Padres ({{ cohorteService.resultados.data.query_padres_termino_preferido.length }})
-            </h2>
+            <div class="titleRow">
+                <h2>
+                    Padres ({{ cohorteService.resultados.data.query_padres_termino_preferido.length }})
+                </h2>
+
+                <button mat-raised-button class="botonSelectAll"
+                    (click)="cohorteService.selectAll(cohorteService.resultados.data.query_padres_termino_preferido)">
+                    Select all
+                </button>
+            </div>
 
             <li *ngFor="let padre of cohorteService.resultados.data.query_padres_termino_preferido">
                 <mat-checkbox class="checkboxTermino" (change)="cohorteService.onChange($event, padre)"
@@ -43,9 +52,16 @@
 
     <div class="hijos">
         <ul>
-            <h2>
-                Hijos ({{ cohorteService.resultados.data.query_hijos_termino_preferido.length }})
-            </h2>
+            <div class="titleRow">
+                <h2>
+                    Hijos ({{ cohorteService.resultados.data.query_hijos_termino_preferido.length }})
+                </h2>
+
+                <button mat-raised-button class="botonSelectAll"
+                    (click)="cohorteService.selectAll(cohorteService.resultados.data.query_hijos_termino_preferido)">
+                    Select all
+                </button>
+            </div>
 
             <li *ngFor="let hijo of cohorteService.resultados.data.query_hijos_termino_preferido">
                 <mat-checkbox class="checkboxTermino" (change)="cohorteService.onChange($event, hijo)"
