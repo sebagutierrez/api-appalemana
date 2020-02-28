@@ -4,20 +4,20 @@ import { FormsModule } from '@angular/forms';
 //import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RouterModule } from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BuscadorComponent } from './components/buscador/buscador.component';
 import { ResultadosComponent } from './components/resultados/resultados.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { CohortesComponent } from './components/cohortes/cohortes.component';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MatButtonModule } from '@angular/material/button';
-import { CohortesComponent } from './components/cohortes/cohortes.component';
-
 
 
 @NgModule({
@@ -34,6 +34,7 @@ import { CohortesComponent } from './components/cohortes/cohortes.component';
     FormsModule,
     BrowserAnimationsModule,
     FontAwesomeModule,
+    RouterModule,
     MatToolbarModule,
     MatCheckboxModule,
     MatProgressBarModule,

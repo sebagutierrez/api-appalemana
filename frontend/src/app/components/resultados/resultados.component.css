@@ -1,14 +1,19 @@
 .barraOpciones {
+    display: flex;
     background-color: #cceed2;
     height: 3rem;
+    width: 100;
 }
 
 .botonAgregarCohorte {
     margin: 5px;
-    margin-left: 91%;
     color: rgb(179, 255, 173);
     background-color: rgb(0, 165, 0);
     font-weight: bold;
+}
+
+.botonVerCohorte {
+    margin: 5px;
 }
 
 .padres {
@@ -55,7 +60,7 @@ p.loading {
 
 .container {
     display: flex;
-    margin-top: 0.7em;
+    /* margin-top: 0.5em; */
 }
 
 ul {
