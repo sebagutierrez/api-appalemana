@@ -1,0 +1,48 @@
+.barraOpciones {
+    display: flex;
+    background-color: #cceed2;
+    height: 3rem;
+    width: 100;
+}
+
+.botonesCohorte {
+    display: flex;
+    align-content: center;
+    margin-left: 10px;
+}
+
+button {
+    margin: 5px
+}
+
+.marginTopCohorteActual {
+    margin: 1rem;
+}
+
+.panelCohorteActual {
+    margin: 1rem;
+    margin-top: 1.5rem;
+    width: 50%;
+    background-color:rgb(72, 150, 53);
+}
+
+.panelTodasLasCohortes {
+    margin: 1rem;
+    margin-top: 1.5rem;
+    width: 50%;
+    background-color:rgb(103, 190, 81);
+}
+
+mat-panel-title {
+    color: white;
+}
+
+ul {
+    color: white;
+}
+
+
+
+.acordionCohorteActual {
+    margin-top: 2rem;
+}

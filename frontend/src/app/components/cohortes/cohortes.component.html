@@ -1,1 +1,37 @@
-<p>cohortes works!</p>
+<div class="barraOpciones">
+    <div class="botonesCohorte">
+        <button mat-raised-button>Agregar cohorte</button>
+        <button mat-raised-button>Eliminar cohorte</button>
+        <button mat-raised-button>Modificar cohorte</button>
+    </div>
+</div>
+
+<!-- Margin para el expansion panel de cohorte actual -->
+<div class="marginTopCohorteActual">
+</div>
+
+<mat-accordion class="acordionCohorteActual">
+    <mat-expansion-panel class="panelCohorteActual">
+        <mat-expansion-panel-header>
+            <mat-panel-title>Cohorte actual</mat-panel-title>
+        </mat-expansion-panel-header>
+        <ul>
+            <li *ngFor="let concepto of cohorteService.cohorteActual">
+                {{ concepto.termino_preferido }}
+            </li>
+        </ul>
+    </mat-expansion-panel>
+</mat-accordion>
+
+<mat-accordion class="acordionTodasLasCohortes">
+    <mat-expansion-panel class="panelTodasLasCohortes">
+        <mat-expansion-panel-header>
+            <mat-panel-title>Cohorte actual</mat-panel-title>
+        </mat-expansion-panel-header>
+        <ul>
+            <li *ngFor="let concepto of cohorteService.cohorteActual">
+                {{ concepto.termino_preferido }}
+            </li>
+        </ul>
+    </mat-expansion-panel>
+</mat-accordion>

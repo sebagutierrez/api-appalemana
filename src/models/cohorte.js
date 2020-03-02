@@ -5,6 +5,10 @@ module.exports = (sequelize, DataTypes) => {
             primaryKey: true,
             autoincrement: true,
             type: DataTypes.INTEGER,
+        },
+        nombre_cohorte: {
+            allowNull: false,
+            type: DataTypes.STRING(150)
         }
     }, {
         tableName: 'cohorte',

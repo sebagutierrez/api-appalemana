@@ -4,7 +4,8 @@
 
 <div class="barraOpciones" *ngIf="isDataLoaded; else loading">
     <div class="botonesCohorte">
-        <button mat-raised-button class="botonVerCohorte" (click)="showCohorte()">Ver cohorte</button>
+        <button mat-raised-button class="botonVerCohorte" [routerLink]="['/cohortes']" (click)="showCohorte()">
+            Ver cohorte ({{ cohorteService.cohorteActual.length }})</button>
         <fa-icon [icon]="faTrash" (click)="cohorteService.removeAllFromCohorte()"></fa-icon>
     </div>
 </div>
@@ -16,11 +17,18 @@
                 <h2>
                     Padres ({{ cohorteService.resultados.data.query_padres_termino_preferido.length }})
                 </h2>
+                <div class="titleRowCohorteOpciones">
+                    <button mat-raised-button class="botonSelectAll"
+                        (click)="cohorteService.selectAll(cohorteService.resultados.data.query_padres_termino_preferido)">
+                        Select all
+                    </button>
 
-                <button mat-raised-button class="botonSelectAll"
-                    (click)="cohorteService.selectAll(cohorteService.resultados.data.query_padres_termino_preferido)">
-                    Select all
-                </button>
+                    <button mat-raised-button class="botonDeselectAll"
+                        (click)="cohorteService.deselectAll(cohorteService.resultados.data.query_padres_termino_preferido)">
+                        Deselect all
+                    </button>
+                </div>
+
             </div>
 
             <li *ngFor="let padre of cohorteService.resultados.data.query_padres_termino_preferido">
@@ -57,10 +65,18 @@
                     Hijos ({{ cohorteService.resultados.data.query_hijos_termino_preferido.length }})
                 </h2>
 
-                <button mat-raised-button class="botonSelectAll"
-                    (click)="cohorteService.selectAll(cohorteService.resultados.data.query_hijos_termino_preferido)">
-                    Select all
-                </button>
+                <div class="titleRowCohorteOpciones">
+                    <button mat-raised-button class="botonSelectAll"
+                        (click)="cohorteService.selectAll(cohorteService.resultados.data.query_hijos_termino_preferido)">
+                        Select all
+                    </button>
+
+                    <button mat-raised-button class="botonDeselectAll"
+                        (click)="cohorteService.deselectAll(cohorteService.resultados.data.query_hijos_termino_preferido)">
+                        Deselect all
+                    </button>
+                </div>
+
             </div>
 
             <li *ngFor="let hijo of cohorteService.resultados.data.query_hijos_termino_preferido">

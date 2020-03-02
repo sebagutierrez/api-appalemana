@@ -16,9 +16,10 @@ import { CohortesComponent } from './components/cohortes/cohortes.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MatButtonModule } from '@angular/material/button';
+import { MatExpansionModule } from '@angular/material/expansion';
 
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { MatButtonModule } from '@angular/material/button';
     MatCheckboxModule,
     MatProgressBarModule,
     MatButtonModule,
+    MatExpansionModule,
     HttpClientModule,
   ],
   providers: [],

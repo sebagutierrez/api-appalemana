@@ -49,10 +49,13 @@ export class ResultadosComponent implements OnInit {
           this.isDataLoaded = true;
           console.log(this.cohorteService.resultados);
 
-          //this.autosetCheckbox();
         })
     });
   }
+
+
+  // LOS LLAMADOS DE MÉTODOS DESDE EL TEMPLATE HACIA EL SERVICE DEBEN SER MEDIADOS POR EL COMPONENTE (MÉTODO PUENTE)
+
 
 
   // Agrega a la checklist (lista de cohortes) todos los checkeados cuando se clickea el botón.

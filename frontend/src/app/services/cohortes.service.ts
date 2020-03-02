@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+
 import { Resultado } from '../components/resultados/resultados.model';
 
 @Injectable({
@@ -9,8 +11,13 @@ export class CohortesService {
   cohorteActual = [];
   resultados: Resultado;
 
-  constructor() { }
+  constructor(
+    private http: HttpClient
+  ) { }
 
+
+
+  // Component Resultados
   isChecked(termino) {
     return (this.cohorteActual.findIndex(term => termino.termino_preferido === term.termino_preferido) != -1);
   }
@@ -53,4 +60,20 @@ export class CohortesService {
       }
     });
   }
+
+  deselectAll(array) {
+    array.forEach(element => {
+      if (element.checked) {
+        element.checked = false;
+        this.removeFromCohorte(element);
+      }
+    });
+  }
+
+  // Component Cohortes
+  getCohortes() {
+    return this.http.get("http://localhost:3000/cohortes");
+  }
+
+
 }

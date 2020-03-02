@@ -10,13 +10,12 @@ input {
     border: 3px solid #94d3ac;
     font-size: 18px;
     border-radius: 5px 0 0 5px;
-    text-indent: 10px;
+    text-indent: 15px;
     height: 3rem;
 }
 
 ::placeholder {
     font-size: 17px;
-    margin-left: 10px;
 }
 
 fa-icon {

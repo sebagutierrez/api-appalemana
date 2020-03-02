@@ -43,15 +43,23 @@ fa-icon {
 .titleRow {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+}
+
+.titleRowCohorteOpciones {
+    margin-left: auto;
 }
 
 .botonSelectAll {
-    display: table-cell;
-    vertical-align: middle;
     margin-right: 10px;
     height: 2rem;
-    /* align-content: center; */
+    font-weight: bold;
+    color: white;
+    background-color: rgb(152, 115, 185);
+}
+
+.botonDeselectAll {
+    margin-right: 10px;
+    height: 2rem;
     font-weight: bold;
     color: white;
     background-color: rgb(152, 115, 185);
