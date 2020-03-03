@@ -10,7 +10,7 @@ export class ResultadosService {
     constructor(private http: HttpClient) { }
 
     getResults(termino) {
-        return this.http.get(`http://localhost:3000/results/${termino}`);
+        return this.http.get<Resultado>(`http://localhost:3000/results/${termino}`);
     }
 
 

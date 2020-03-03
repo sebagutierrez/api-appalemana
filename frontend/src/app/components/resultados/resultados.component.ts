@@ -21,6 +21,7 @@ export class ResultadosComponent implements OnInit {
   resultados: Resultado;
   isDataLoaded = false;
 
+  param: string;
   faTrash = faTrash;
 
 
@@ -36,6 +37,7 @@ export class ResultadosComponent implements OnInit {
   ngOnInit(): void {
 
     this.route.params.subscribe(params => {
+
       this.routeParams = params.searchInput;
 
       this.resultadosService.getResults(this.routeParams)
@@ -45,107 +47,40 @@ export class ResultadosComponent implements OnInit {
           if (!Object.keys(data.data).length) {
             this.router.navigateByUrl('/');
           }
+
           this.cohorteService.resultados = data;
+          this.cohorteService.checkAllInCohorte();
+
           this.isDataLoaded = true;
           console.log(this.cohorteService.resultados);
 
         })
     });
+
+
+    /*  TEST
+    
+    console.log(this.route.snapshot.params.searchInput);
+
+
+    this.param = this.route.snapshot.params.searchInput;
+    this.getResults(this.param); */
   }
 
 
-  // LOS LLAMADOS DE MÉTODOS DESDE EL TEMPLATE HACIA EL SERVICE DEBEN SER MEDIADOS POR EL COMPONENTE (MÉTODO PUENTE)
-
-
-
-  // Agrega a la checklist (lista de cohortes) todos los checkeados cuando se clickea el botón.
-  // A FUTURO: hacer esto con observables, así se agrega automáticamente si se selecciona/deselecciona un término.
-  /* addToCohorte() {
-    let arrayModified = false;
-
-    if (this.resultados.data.query_termino_preferido) {
-
-      this.resultados.data.query_padres_termino_preferido.forEach(termino => {
-        if (termino.checked && !this.cohorteService.cohorteActual.includes(termino)) {
-
-          this.cohorteService.cohorteActual.push(termino);
-          arrayModified = true;
-
-        } else if (!termino.checked && this.cohorteService.cohorteActual.includes(termino)) {
-
-          this.removeFromCohorte(termino);
-          arrayModified = true;
-
-
-        }
-      });
-
-      if (this.resultados.data.query_termino_preferido[0].checked &&
-        !this.cohorteService.cohorteActual.includes(this.resultados.data.query_termino_preferido[0])) {
-
-        this.cohorteService.cohorteActual.push(this.resultados.data.query_termino_preferido[0]);
-        arrayModified = true;
-
-      } else if (!this.resultados.data.query_termino_preferido[0].checked &&
-        this.cohorteService.cohorteActual.includes(this.resultados.data.query_termino_preferido[0])) {
-
-        this.removeFromCohorte(this.resultados.data.query_termino_preferido[0]);
-        arrayModified = true;
-
-      }
-
-      this.resultados.data.query_hijos_termino_preferido.forEach(termino => {
-        if (termino.checked && !this.cohorteService.cohorteActual.includes(termino)) {
-
-          this.cohorteService.cohorteActual.push(termino);
-          arrayModified = true;
-
-        } else if (!termino.checked && this.cohorteService.cohorteActual.includes(termino)) {
-
-          this.removeFromCohorte(termino);
-          arrayModified = true;
-
-        }
-      });
-    }
-    if (arrayModified) {
-      console.log("Cohorte modificada!");
-    }
+  /*    TEST 
+  
+  getResults(param) {
+    this.resultadosService.getResults(param).subscribe(
+      data => this.cohorteService.resultados = data,
+      error => console.log(error),
+      () => this.isDataLoaded = true
+    );
   } */
 
-  // Elimina un término de la cohorte.
-  /* removeFromCohorte(termino) {
-    const index = this.cohorteService.cohorteActual.indexOf(termino);
-    if (index !== -1) {
-      this.cohorteService.cohorteActual.splice(index, 1);
-      termino.checked = false;
-    }
-  } */
 
   // Muestra la cohorte.
   showCohorte() {
     console.log(this.cohorteService.cohorteActual);
   }
-
-  /* onChange($event, termino) {
-    termino.checked = $event.checked;
-    this.cohorteService.addToArrayCohorte(termino);
-  } */
-
-  /* addToArrayCohorte(termino) {
-    if (!this.cohorteService.cohorteActual.includes(termino)) {
-      this.cohorteService.cohorteActual.push(termino);
-      console.log(`Termino (${termino.termino_preferido}) agregado a la cohorte`);
-    } else {
-      if (!termino.checked) {
-        this.removeFromCohorte(termino);
-        console.log(`Termino (${termino.termino_preferido}) removido de la cohorte`);
-      }
-    }
-  } */
-
-  /* autosetChecked(termino) {
-    return this.cohorteService.cohorteActual.includes(termino);
-  } */
-
 }

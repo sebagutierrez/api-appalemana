@@ -6,7 +6,12 @@
     <div class="botonesCohorte">
         <button mat-raised-button class="botonVerCohorte" [routerLink]="['/cohortes']" (click)="showCohorte()">
             Ver cohorte ({{ cohorteService.cohorteActual.length }})</button>
+
         <fa-icon [icon]="faTrash" (click)="cohorteService.removeAllFromCohorte()"></fa-icon>
+
+        <button mat-raised-button
+            (click)="cohorteService.verEstado(cohorteService.resultados.data.query_padres_termino_preferido)">
+        </button>
     </div>
 </div>
 
@@ -32,10 +37,12 @@
             </div>
 
             <li *ngFor="let padre of cohorteService.resultados.data.query_padres_termino_preferido">
-                <mat-checkbox class="checkboxTermino" (change)="cohorteService.onChange($event, padre)"
+                <mat-checkbox class="checkboxTermino"
+                    (change)="cohorteService.onChange($event, padre, cohorteService.resultados.data.query_padres_termino_preferido)"
                     [checked]="cohorteService.isChecked(padre)">
-                    <a class="links"
-                        [routerLink]="['/results/', padre.termino_preferido]">{{ padre.termino_preferido }}</a>
+
+                    <a class="links" [routerLink]="['/results/', padre.termino_preferido]">{{ padre.termino_preferido }}
+                    </a>
                 </mat-checkbox>
             </li>
         </ul>
@@ -48,10 +55,12 @@
             </h2>
 
             <li *ngFor="let termino of cohorteService.resultados.data.query_termino_preferido">
-                <mat-checkbox class="checkboxTermino" (change)="cohorteService.onChange($event, termino)"
+                <mat-checkbox class="checkboxTermino"
+                    (change)="cohorteService.onChange($event, termino, cohorteService.resultados.data.query_termino_preferido)"
                     [checked]="cohorteService.isChecked(termino)">
                     <a class="links"
-                        [routerLink]="['/results/', termino.termino_preferido]">{{ termino.termino_preferido }}</a>
+                        [routerLink]="['/results/', termino.termino_preferido]">{{ termino.termino_preferido }}
+                    </a>
                     <p>ID: {{ termino.concept_id_HIBA }}</p>
                 </mat-checkbox>
             </li>
@@ -80,10 +89,11 @@
             </div>
 
             <li *ngFor="let hijo of cohorteService.resultados.data.query_hijos_termino_preferido">
-                <mat-checkbox class="checkboxTermino" (change)="cohorteService.onChange($event, hijo)"
+                <mat-checkbox class="checkboxTermino"
+                    (change)="cohorteService.onChange($event, hijo, cohorteService.resultados.data.query_hijos_termino_preferido)"
                     [checked]="cohorteService.isChecked(hijo)">
-                    <a class="links"
-                        [routerLink]="['/results/', hijo.termino_preferido]">{{ hijo.termino_preferido }}</a>
+                    <a class="links" [routerLink]="['/results/', hijo.termino_preferido]">{{ hijo.termino_preferido }}
+                    </a>
                 </mat-checkbox>
             </li>
         </ul>
