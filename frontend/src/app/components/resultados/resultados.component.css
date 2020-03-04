@@ -11,9 +11,16 @@
     margin-left: 10px;
 }
 
-.botonVerCohorte {
+.botonNuevaCohorte {
     margin: 5px;
-    background-color: rgb(72, 167, 85);
+    background-color: rgb(50, 165, 66);
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+}
+
+.botonVerCohortes {
+    margin: 5px;
+    background-color: rgb(46, 114, 55);
     color: rgb(255, 255, 255);
     font-weight: bold;
 }

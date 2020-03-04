@@ -8,3 +8,7 @@ mat-toolbar {
     font-size: 25px;
     cursor: pointer;
 }
+
+app-buscador {
+    margin-left: auto;
+}

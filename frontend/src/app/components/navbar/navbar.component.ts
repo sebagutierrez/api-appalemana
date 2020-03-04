@@ -4,12 +4,12 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.css']
+  styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent implements OnInit {
 
   constructor(
-    private router: Router
+    private router: Router,
   ) { }
 
   ngOnInit(): void {
@@ -17,6 +17,10 @@ export class NavbarComponent implements OnInit {
 
   onClickHome() {
     this.router.navigateByUrl('/');
+  }
+
+  isHome() {
+    return this.router.url === '/';
   }
 
 }

@@ -4,14 +4,15 @@
 
 <div class="barraOpciones" *ngIf="isDataLoaded; else loading">
     <div class="botonesCohorte">
-        <button mat-raised-button class="botonVerCohorte" [routerLink]="['/cohortes']" (click)="showCohorte()">
-            Ver cohorte ({{ cohorteService.cohorteActual.length }})</button>
+
+        <button mat-raised-button class="botonVerCohortes" [routerLink]="['/cohortes']" (click)="showCohorte()">
+            Ver cohortes</button>
+
+        <button mat-raised-button class="botonNuevaCohorte" [routerLink]="['/cohortes/new']" (click)="showCohorte()">
+            Nueva cohorte ({{ cohorteService.cohorteActual.length }})</button>
 
         <fa-icon [icon]="faTrash" (click)="cohorteService.removeAllFromCohorte()"></fa-icon>
 
-        <button mat-raised-button
-            (click)="cohorteService.verEstado(cohorteService.resultados.data.query_padres_termino_preferido)">
-        </button>
     </div>
 </div>
 

@@ -20,6 +20,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatExpansionModule } from '@angular/material/expansion';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { NuevacohorteComponent } from './components/nuevacohorte/nuevacohorte.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     ResultadosComponent,
     NavbarComponent,
     CohortesComponent,
+    NuevacohorteComponent,
   ],
   imports: [
     BrowserModule,
