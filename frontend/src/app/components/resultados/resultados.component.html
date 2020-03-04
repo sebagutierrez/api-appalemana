@@ -11,7 +11,9 @@
         <button mat-raised-button class="botonNuevaCohorte" [routerLink]="['/cohortes/new']" (click)="showCohorte()">
             Nueva cohorte ({{ cohorteService.cohorteActual.length }})</button>
 
-        <fa-icon [icon]="faTrash" (click)="cohorteService.removeAllFromCohorte()"></fa-icon>
+        <button mat-raised-button class="botonEliminarCohorte" (click)="cohorteService.removeAllFromCohorte()">
+            <fa-icon [icon]="faTrash" (click)="cohorteService.removeAllFromCohorte()"></fa-icon>
+        </button>
 
     </div>
 </div>

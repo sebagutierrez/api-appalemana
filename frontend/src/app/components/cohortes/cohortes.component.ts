@@ -10,7 +10,7 @@ import { CohortesService } from 'src/app/services/cohortes.service';
 export class CohortesComponent implements OnInit {
 
   constructor(
-    public cohorteService: CohortesService
+    public cohortesService: CohortesService
   ) { }
 
   ngOnInit(): void {

@@ -1,1 +1,35 @@
-<p>nuevacohorte works!</p>
+<div class="barraOpciones">
+    <div class="botonesCohorte">
+
+        <button mat-raised-button class="botonVerCohortes" [routerLink]="['/cohortes']">
+            Ver cohortes</button>
+
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="cohorte">
+        <h2>Crear nueva cohorte ({{cohorteService.cohorteActual.length}})</h2>
+
+        <div class="nombreCohorte">
+            <input matInput size="30" placeholder="Nombre cohorte" value=''>
+        </div>
+
+        <div class="cuerpoCohorte">
+            <ul>
+                <li *ngFor="let termino of cohorteService.cohorteActual">
+
+                    <mat-checkbox class="checkboxTermino"
+                        (change)="cohorteService.onChange($event, termino, cohorteService.cohorteActual)"
+                        [checked]="cohorteService.isChecked(termino)">
+
+                        <a class="links"
+                            [routerLink]="['/results/', termino.termino_preferido]">{{ termino.termino_preferido }}</a>
+
+                    </mat-checkbox>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

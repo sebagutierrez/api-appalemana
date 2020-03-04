@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { CohortesService } from 'src/app/services/cohortes.service';
+
 @Component({
   selector: 'app-nuevacohorte',
   templateUrl: './nuevacohorte.component.html',
@@ -7,7 +9,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NuevacohorteComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public cohorteService: CohortesService
+  ) { }
 
   ngOnInit(): void {
   }

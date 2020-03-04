@@ -27,8 +27,7 @@
 
 .botonEliminarCohorte {
     margin: 5px;
-    width: 1em;
-    background-color: rgb(43, 255, 0);
+    background-color: rgb(255, 255, 255);
 }
 
 fa-icon {
