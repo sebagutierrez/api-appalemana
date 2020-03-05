@@ -6,6 +6,7 @@ require('./config/environment');
 // Importación de rutas
 const indexRouter = require('./routes/index.routes');
 const buscarRouter = require('./routes/buscar.routes');
+const cohorteRouter = require('./routes/cohorte.routes');
 
 // Importación de modulos personalizados
 const swaggerUi = require('./core/swagger');
@@ -14,7 +15,6 @@ const app = express();
 
 // HABILITA CORS
 app.use(cors());
-
 
 
 
@@ -27,5 +27,6 @@ app.use(helmet());
 // Declaración de rutas
 app.use('/', indexRouter);
 app.use('/results', buscarRouter);
+app.use('/cohortes', cohorteRouter);
 
 module.exports = app;

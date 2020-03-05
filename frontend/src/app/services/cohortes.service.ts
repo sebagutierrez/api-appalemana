@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 
 import { Resultado } from '../components/resultados/resultados.model';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -10,6 +11,12 @@ export class CohortesService {
 
   nombreCohorte = '';
   cohorteActual = [];
+
+  cohorteObject = {
+    nombre: '',
+    terminos: []
+  }
+
   resultados: Resultado;
 
   constructor(
@@ -17,7 +24,16 @@ export class CohortesService {
   ) { }
 
 
+  postCohorte(nombreCohorte, cohorteActual) {
 
+    //maybe hacer esto de abajo (asignacion) en el componente, y luego mandar el objeto para que esta funcion solamente haga la http request 
+    this.cohorteObject.nombre = nombreCohorte;
+    this.cohorteObject.terminos = cohorteActual;
+
+    console.log(this.cohorteObject);
+
+    this.http.post('http://localhost:3000/cohortes/new', this.cohorteObject).subscribe(data => console.log(data));
+  }
 
   // Verifica si se encuentra un término en el arreglo de cohortes.
   isChecked(termino) {
