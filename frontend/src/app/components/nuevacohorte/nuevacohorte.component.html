@@ -10,10 +10,18 @@
 
 <div class="container">
     <div class="cohorte">
-        <h2>Crear nueva cohorte ({{cohorteService.cohorteActual.length}})</h2>
+
+        <div class="headerCohorte">
+            <h2>Crear nueva cohorte ({{cohorteService.cohorteActual.length}})</h2>
+            <fa-icon [icon]="faCheckCircle"></fa-icon>
+        </div>
 
         <div class="nombreCohorte">
-            <input matInput size="30" placeholder="Nombre cohorte" value=''>
+            <mat-form-field appearance="legacy">
+                <mat-label>Nombre de la cohorte *</mat-label>
+                <input matInput>
+                <mat-hint>*Requerido</mat-hint>
+            </mat-form-field>
         </div>
 
         <div class="cuerpoCohorte">

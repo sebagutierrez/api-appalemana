@@ -8,6 +8,7 @@ import { Resultado } from '../components/resultados/resultados.model';
 })
 export class CohortesService {
 
+  nombreCohorte = '';
   cohorteActual = [];
   resultados: Resultado;
 

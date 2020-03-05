@@ -8,10 +8,11 @@
         <button mat-raised-button class="botonVerCohortes" [routerLink]="['/cohortes']" (click)="showCohorte()">
             Ver cohortes</button>
 
-        <button mat-raised-button class="botonNuevaCohorte" [routerLink]="['/cohortes/new']" (click)="showCohorte()">
+        <button mat-raised-button class="botonNuevaCohorte" [routerLink]="['/cohortes/new']" (click)="showCohorte()"
+            [ngStyle]="cohorteService.cohorteActual.length === 0 ? {'background-color':'rgb(112, 112, 112)'} : {'background-color': 'rgb(50, 165, 66)'}">
             Nueva cohorte ({{ cohorteService.cohorteActual.length }})</button>
 
-        <button mat-raised-button class="botonEliminarCohorte" (click)="cohorteService.removeAllFromCohorte()">
+        <button mat-raised-button class=" botonEliminarCohorte" (click)="cohorteService.removeAllFromCohorte()">
             <fa-icon [icon]="faTrash" (click)="cohorteService.removeAllFromCohorte()"></fa-icon>
         </button>
 
