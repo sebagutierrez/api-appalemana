@@ -32,7 +32,8 @@
         <div class="bodyCohorte">
             <div *ngFor="let concepto of cohorteService.cohorteGet.data.query_conceptos">
                 <span class="concepto" *ngIf="concepto.id_cohorte === cohorte.id_cohorte">
-                    {{ concepto.termino_preferido }}
+                    <a class="links"
+                        [routerLink]="['/results/', concepto.termino_preferido]">{{ concepto.termino_preferido }}</a>
                 </span>
             </div>
         </div>

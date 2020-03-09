@@ -19,6 +19,7 @@ export class CohortesService {
   }
 
   cohorteGet: Cohortes;
+
   isDataLoaded = false;
 
 
@@ -60,12 +61,12 @@ export class CohortesService {
   }
 
   removeCohorte(id_cohorte) {
-    this.http.delete('http://localhost:3000/cohortes/delete')
+    this.http.request('delete', 'http://localhost:3000/cohortes/delete', { body: { id_cohorte } })
       .subscribe(
         data => console.log("Eliminado correctamente"),
         error => console.log(error),
         () => this.getCohorte()
-      )
+      );
   }
 
   // Verifica si se encuentra un término en el arreglo de cohortes.

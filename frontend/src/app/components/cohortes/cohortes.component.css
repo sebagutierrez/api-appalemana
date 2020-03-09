@@ -97,3 +97,10 @@ hr {
     color: red;
 }
 
+.links {
+    text-decoration: none;
+}
+
+.a:visited {
+    text-decoration: none;
+}
