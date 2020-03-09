@@ -2,7 +2,8 @@
     <div class="botonesCohorte">
 
         <button mat-raised-button class="botonVerCohortes" [routerLink]="['/cohortes']">
-            Ver cohortes</button>
+            Ver cohortes
+        </button>
 
     </div>
 </div>
@@ -13,9 +14,16 @@
 
         <div class="headerCohorte">
             <h2>Crear nueva cohorte ({{cohorteService.cohorteActual.length}})</h2>
-            <fa-icon [icon]="faCheckCircle"
-                (click)="cohorteService.postCohorte(cohorteService.nombreCohorte, cohorteService.cohorteActual)">
-            </fa-icon>
+            <span *ngIf="cohorteService.nombreCohorte && cohorteService.cohorteActual.length; else buttonDisabled">
+                <fa-icon class="iconEnabled" [icon]="faCheckCircle"
+                    (click)="cohorteService.postCohorte(cohorteService.nombreCohorte, cohorteService.cohorteActual)">
+                </fa-icon>
+            </span>
+            <ng-template #buttonDisabled>
+                <fa-icon class="iconDisabled" [icon]="faCheckCircle">
+                </fa-icon>
+            </ng-template>
+
         </div>
 
         <div class="nombreCohorte">

@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 import { Resultado } from '../components/resultados/resultados.model';
-
+import { Cohortes } from '../components/cohortes/cohortes.model';
 
 @Injectable({
   providedIn: 'root'
@@ -12,27 +13,59 @@ export class CohortesService {
   nombreCohorte = '';
   cohorteActual = [];
 
-  cohorteObject = {
+  cohortePost = {
     nombre: '',
     terminos: []
   }
 
+  cohorteGet: Cohortes;
+  isDataLoaded = false;
+
+
   resultados: Resultado;
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private router: Router
   ) { }
 
+  getCohorte() {
+    this.http.get<Cohortes>('http://localhost:3000/cohortes').subscribe(
+      data => this.cohorteGet = data,
+      error => console.log(error),
+      () => {
+        this.isDataLoaded = true,
+          console.log('Cohortes cargadas correctamente!'),
+          console.log(this.cohorteGet)
+      }
+    );
+  }
 
   postCohorte(nombreCohorte, cohorteActual) {
 
     //maybe hacer esto de abajo (asignacion) en el componente, y luego mandar el objeto para que esta funcion solamente haga la http request 
-    this.cohorteObject.nombre = nombreCohorte;
-    this.cohorteObject.terminos = cohorteActual;
+    this.cohortePost.nombre = nombreCohorte;
+    this.cohortePost.terminos = cohorteActual;
 
-    console.log(this.cohorteObject);
+    console.log(this.cohortePost);
 
-    this.http.post('http://localhost:3000/cohortes/new', this.cohorteObject).subscribe(data => console.log(data));
+    this.http.post('http://localhost:3000/cohortes/new', this.cohortePost)
+      .subscribe(
+        data => console.log(data),
+        error => console.log(error),
+        () => {
+          this.router.navigateByUrl('/cohortes')
+        }
+      );
+  }
+
+  removeCohorte(id_cohorte) {
+    this.http.delete('http://localhost:3000/cohortes/delete')
+      .subscribe(
+        data => console.log("Eliminado correctamente"),
+        error => console.log(error),
+        () => this.getCohorte()
+      )
   }
 
   // Verifica si se encuentra un término en el arreglo de cohortes.

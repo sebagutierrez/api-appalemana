@@ -1,3 +1,11 @@
+::ng-deep .mat-progress-bar-fill::after {
+    background-color: rgb(103, 190, 107);
+}
+
+::ng-deep .mat-progress-bar-buffer {
+    background: #E4E8EB;
+}
+
 .barraOpciones {
     display: flex;
     background-color: #cceed2;
@@ -15,34 +23,77 @@ button {
     margin: 5px
 }
 
-.marginTopCohorteActual {
-    margin: 1rem;
-}
-
-.panelCohorteActual {
-    margin: 1rem;
-    margin-top: 1.5rem;
-    width: 50%;
-    background-color:rgb(72, 150, 53);
-}
-
-.panelTodasLasCohortes {
-    margin: 1rem;
-    margin-top: 1.5rem;
-    width: 50%;
-    background-color:rgb(103, 190, 81);
-}
-
-mat-panel-title {
-    color: white;
-}
-
 ul {
     color: white;
 }
 
-
-
-.acordionCohorteActual {
-    margin-top: 2rem;
+.container {
+    display: flex;
+    flex-direction: column;
 }
+
+.containerCohorte {
+    padding: 2rem 2rem 2rem 3rem;
+    margin: 1rem;
+    margin-left: 33%;
+    width: 36%;
+    border: 1px solid #35a560c7;
+    border-radius: 7px;
+    box-shadow: 6px 6px 6px -5px rgba(92, 92, 92, 0.75);    
+}
+
+.cohorteID {
+    font-size: 20px;
+}
+
+.cohorteName {
+    font-size: 20px;
+}
+
+.headerPipe {
+    font-size: 20px;
+    margin-left: 18px;
+    margin-right: 18px;
+    color: rgba(124, 124, 124, 0.438);
+}
+
+.headerCohorte {
+    display: flex;
+}
+
+hr {
+    margin-bottom: 1rem;
+    color: rgba(221, 221, 221, 0.356);
+    
+}
+
+.bodyCohorte {
+    max-height: 250px;
+    overflow-y: scroll;
+    scroll-padding-bottom: 2rem;
+}
+
+.iconModify {
+    font-size: 1.5rem;
+    color: #84ca9f;
+    margin-left: auto;
+    margin-right: 3%;
+    cursor: pointer;
+}
+
+.iconRemove {
+    font-size: 1.5rem;
+    color: rgba(255, 0, 0, 0.562);
+    /* margin-left: auto; */
+    margin-right: 3%;
+    cursor: pointer;
+}
+
+.iconModify:hover {
+    color: #248f4d;
+}
+
+.iconRemove:hover {
+    color: red;
+}
+

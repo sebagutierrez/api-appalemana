@@ -10,6 +10,9 @@ const cohorteController = require('../controllers/cohorte.controller');
  *    get:
  *      description: Initial endpoint
  */
+
+router.get('', cohorteController.getCohortes);
 router.post('/new', cohorteController.postCohorte);
+
 
 module.exports = router;

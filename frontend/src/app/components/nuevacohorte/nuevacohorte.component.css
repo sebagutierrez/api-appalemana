@@ -1,3 +1,5 @@
+/* Barra de opciones */
+
 .barraOpciones {
     display: flex;
     background-color: #cceed2;
@@ -18,18 +20,8 @@
     font-weight: bold;
 }
 
-.headerCohorte {
-    display: flex;
-}
 
-fa-icon {
-    
-    font-size: 2.5rem;
-    color: rgb(190, 93, 255);
-    cursor: pointer;
-    margin-left: auto;
-    margin-right: 5%;
-}
+/* Container crear nueva cohorte */
 
 .container {
     display: flex;
@@ -44,10 +36,43 @@ fa-icon {
 
 }
 
+/* Header nueva cohorte*/
+
+.headerCohorte {
+    display: flex;
+}
+
 .cohorte {
     margin-top: 15px;
     margin: 1rem;
 }
+
+fa-icon {
+    
+    font-size: 2.5rem;
+    color: rgb(0, 187, 16);
+    margin-left: auto;
+    margin-right: 5%;
+}
+
+.iconEnabled {
+    cursor: pointer;
+}
+
+.iconDisabled {
+    
+    font-size: 2.5rem;
+    color: rgb(90, 90, 90);
+    margin-left: auto;
+    margin-right: 5%;
+}
+
+span {
+    margin-left: auto;
+    margin-right: 5%;
+}
+
+/* Nombre nueva cohorte */
 
 .nombreCohorte {
     margin-left: 13%
@@ -56,6 +81,8 @@ fa-icon {
 .mat-form-field {
     width: 420px;
 }
+
+/* Cuerpo nueva cohorte */
 
 .cuerpoCohorte {
     margin-left: 7%;

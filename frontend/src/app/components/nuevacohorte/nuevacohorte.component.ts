@@ -4,6 +4,7 @@ import { CohortesService } from 'src/app/services/cohortes.service';
 
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 
+
 @Component({
   selector: 'app-nuevacohorte',
   templateUrl: './nuevacohorte.component.html',
@@ -14,7 +15,7 @@ export class NuevacohorteComponent implements OnInit {
   faCheckCircle = faCheckCircle;
 
   constructor(
-    public cohorteService: CohortesService
+    public cohorteService: CohortesService,
   ) { }
 
   ngOnInit(): void {

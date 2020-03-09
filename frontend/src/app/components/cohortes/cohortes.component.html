@@ -1,36 +1,41 @@
+<ng-template #loading>
+    <mat-progress-bar mode="query"></mat-progress-bar>
+</ng-template>
+
 <!-- <div class="barraOpciones">
     <div class="botonesCohorte">
-        <button mat-raised-button>Agregar cohorte</button>
         <button mat-raised-button>Eliminar cohorte</button>
         <button mat-raised-button>Modificar cohorte</button>
     </div>
+</div> -->
+
+<div class="container" *ngIf="cohorteService.isDataLoaded; else loading">
+    <div class="containerCohorte" *ngFor="let cohorte of cohorteService.cohorteGet.data.query_cohortes">
+
+        <div class="headerCohorte">
+            <p class="cohorteID">
+                ID Cohorte: {{ cohorte.id_cohorte }}
+            </p>
+
+            <span class="headerPipe">|</span>
+
+            <p class="cohorteName">
+                Nombre: {{ cohorte.nombre_cohorte }}
+            </p>
+
+            <fa-icon class="iconModify" [icon]="faPen"></fa-icon>
+            <fa-icon class="iconRemove" [icon]="faTrash" (click)="removeCohorte(cohorte.id_cohorte)"></fa-icon>
+        </div>
+
+        <hr>
+
+        <div class="bodyCohorte">
+            <div *ngFor="let concepto of cohorteService.cohorteGet.data.query_conceptos">
+                <span class="concepto" *ngIf="concepto.id_cohorte === cohorte.id_cohorte">
+                    {{ concepto.termino_preferido }}
+                </span>
+            </div>
+        </div>
+
+    </div>
 </div>
-
-<div class="marginTopCohorteActual">
-</div>
-
-<mat-accordion class="acordionCohorteActual">
-    <mat-expansion-panel class="panelCohorteActual">
-        <mat-expansion-panel-header>
-            <mat-panel-title>Cohorte actual</mat-panel-title>
-        </mat-expansion-panel-header>
-        <ul>
-            <li *ngFor="let concepto of cohorteService.cohorteActual">
-                {{ concepto.termino_preferido }}
-            </li>
-        </ul>
-    </mat-expansion-panel>
-</mat-accordion>
-
-<mat-accordion class="acordionTodasLasCohortes">
-    <mat-expansion-panel class="panelTodasLasCohortes">
-        <mat-expansion-panel-header>
-            <mat-panel-title>Cohorte actual</mat-panel-title>
-        </mat-expansion-panel-header>
-        <ul>
-            <li *ngFor="let concepto of cohorteService.cohorteActual">
-                {{ concepto.termino_preferido }}
-            </li>
-        </ul>
-    </mat-expansion-panel>
-</mat-accordion> -->
