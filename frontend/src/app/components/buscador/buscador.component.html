@@ -1,8 +1,25 @@
 <div class="searchBar">
-    <input autofocus (keyup.enter)="onNewSearch()" size="30" placeholder="Ingrese un término clínico"
-        [(ngModel)]="searchInput" value=''>
+    <form [formGroup]='searchForm'>
+        <input matInput formControlName='searchInput' [matAutocomplete]="auto" autofocus
+            placeholder="Ingrese un término clínico" size="30" (keyup.enter)="onNewSearch()" value="">
+    </form>
 
-    <button class="searchButton" (click)="onNewSearch()" type='button'>
-        <fa-icon [icon]="faSearch"></fa-icon>
+    <button class="searchButton" type='button'>
+        <fa-icon [icon]="faSearch" (click)="onNewSearch()"></fa-icon>
     </button>
 </div>
+
+
+<mat-autocomplete #auto="matAutocomplete">
+
+    <span *ngIf="resultsAutocomplete?.query_autocomplete.length == 500">
+        500+
+    </span>
+    <span *ngIf="resultsAutocomplete?.query_autocomplete.length < 500">
+        {{ resultsAutocomplete?.query_autocomplete.length }}
+    </span>
+
+    <mat-option *ngFor="let result of resultsAutocomplete?.query_autocomplete" [value]="result.termino_preferido">
+        {{ result.termino_preferido }}
+    </mat-option>
+</mat-autocomplete>

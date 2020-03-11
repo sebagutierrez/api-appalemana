@@ -11,7 +11,8 @@ input {
     font-size: 18px;
     border-radius: 5px 0 0 5px;
     text-indent: 15px;
-    height: 3rem;
+    height: 2.5rem;
+    background-color: white;
 }
 
 ::placeholder {
@@ -20,7 +21,7 @@ input {
 
 fa-icon {
     margin: 5px;
-    font-size: 2.55rem;
+    font-size: 2.15rem;
     color: white;
 }
 
