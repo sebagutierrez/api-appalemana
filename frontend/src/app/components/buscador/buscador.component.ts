@@ -6,6 +6,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { TerminoBusqueda, ObjetoAutocomplete } from './buscador.model';
 import { ResultadosService } from 'src/app/services/resultados.service';
 import { finalize, tap, switchMap, debounceTime } from 'rxjs/operators';
+import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 
 
 @Component({
@@ -58,5 +59,13 @@ export class BuscadorComponent implements OnInit {
         this.resultsAutocomplete = result;
         console.log(this.resultsAutocomplete);
       });
+  }
+
+
+  navToConcepto(event: MatAutocompleteSelectedEvent) {
+    const concepto = event.option.value;
+    if (concepto) {
+      this.router.navigateByUrl(`/results/${concepto}`)
+    }
   }
 }

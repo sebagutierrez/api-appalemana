@@ -10,7 +10,7 @@
 </div>
 
 
-<mat-autocomplete #auto="matAutocomplete">
+<mat-autocomplete #auto="matAutocomplete" (optionSelected)="navToConcepto($event)">
 
     <small class="numeroConceptosAutocomplete" *ngIf="resultsAutocomplete?.query_autocomplete.length == 500">
         500+

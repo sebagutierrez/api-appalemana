@@ -30,6 +30,7 @@ export class CohortesService {
     private router: Router
   ) { }
 
+  // Obtiene todas las cohortes existentes en la BD.
   getCohorte() {
     this.http.get<Cohortes>('http://localhost:3000/cohortes').subscribe(
       data => this.cohorteGet = data,
@@ -42,6 +43,7 @@ export class CohortesService {
     );
   }
 
+  // Agrega una cohorte a la BD, posteriormente redirige a Ver Cohortes.
   postCohorte(nombreCohorte, cohorteActual) {
 
     //maybe hacer esto de abajo (asignacion) en el componente, y luego mandar el objeto para que esta funcion solamente haga la http request 
@@ -61,6 +63,7 @@ export class CohortesService {
       );
   }
 
+  // Elimina una cohorte dado un id.
   removeCohorte(id_cohorte) {
     this.http.request('delete', 'http://localhost:3000/cohortes/delete', { body: { id_cohorte } })
       .subscribe(
@@ -76,7 +79,7 @@ export class CohortesService {
   }
 
   // Utilizada al cargar el componente resultados. Busca en el arreglo de cohortes si se encuentra algún término checkeado,
-  // si es así, checked se setea en true.
+  // si es así, setea checked en true.
   checkAllInCohorte() {
     this.resultados.data.query_padres_termino_preferido.forEach(element => {
       if (this.isChecked(element)) {
