@@ -55,7 +55,8 @@ export class CohortesService {
         data => console.log(data),
         error => console.log(error),
         () => {
-          this.router.navigateByUrl('/cohortes')
+          this.removeAllFromCohorte(),
+            this.router.navigateByUrl('/cohortes')
         }
       );
   }
