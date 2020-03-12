@@ -9,7 +9,7 @@ import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BuscadorComponent } from './components/buscador/buscador.component';
-import { ResultadosComponent } from './components/resultados/resultados.component';
+import { ResultadosComponent, DialogAgregarCohorte } from './components/resultados/resultados.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { CohortesComponent } from './components/cohortes/cohortes.component';
 import { AgregarcohorteComponent } from './components/agregarcohorte/agregarcohorte.component';
@@ -25,7 +25,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { ReactiveFormsModule } from '@angular/forms';
-import { MatTreeModule } from '@angular/material/tree';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
@@ -34,6 +34,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     AppComponent,
     BuscadorComponent,
     ResultadosComponent,
+    DialogAgregarCohorte,
     NavbarComponent,
     CohortesComponent,
     NuevacohorteComponent,
@@ -54,6 +55,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     MatFormFieldModule,
     MatInputModule,
     MatAutocompleteModule,
+    MatDialogModule,
     ReactiveFormsModule,
     HttpClientModule,
   ],

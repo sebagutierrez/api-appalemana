@@ -7,6 +7,7 @@ import { CohortesService } from '../../services/cohortes.service';
 import { Resultado } from './resultados.model';
 
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import { MatDialog } from '@angular/material/dialog';
 
 
 
@@ -30,7 +31,8 @@ export class ResultadosComponent implements OnInit {
     private route: ActivatedRoute,
     private resultadosService: ResultadosService,
     public router: Router,
-    public cohorteService: CohortesService
+    public cohorteService: CohortesService,
+    public dialog: MatDialog
   ) { }
 
 
@@ -56,31 +58,24 @@ export class ResultadosComponent implements OnInit {
 
         })
     });
-
-
-    /*  TEST
-    
-    console.log(this.route.snapshot.params.searchInput);
-
-
-    this.param = this.route.snapshot.params.searchInput;
-    this.getResults(this.param); */
   }
-
-
-  /*    TEST 
-  
-  getResults(param) {
-    this.resultadosService.getResults(param).subscribe(
-      data => this.cohorteService.resultados = data,
-      error => console.log(error),
-      () => this.isDataLoaded = true
-    );
-  } */
-
 
   // Muestra la cohorte.
   showCohorte() {
     console.log(this.cohorteService.cohorteActual);
   }
+
+  openDialog() {
+    const dialogRef = this.dialog.open(DialogAgregarCohorte);
+  }
+
+
+
 }
+
+@Component({
+  selector: 'dialog-agregar-cohorte',
+  templateUrl: 'resultados-dialog-agregar-cohorte.html',
+  styleUrls: ['resultados-dialog-agregar-cohorte.css']
+})
+export class DialogAgregarCohorte { }

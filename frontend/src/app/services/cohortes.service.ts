@@ -32,6 +32,7 @@ export class CohortesService {
 
   // Obtiene todas las cohortes existentes en la BD.
   getCohorte() {
+    this.isDataLoaded = false;
     this.http.get<Cohortes>('http://localhost:3000/cohortes').subscribe(
       data => this.cohorteGet = data,
       error => console.log(error),
