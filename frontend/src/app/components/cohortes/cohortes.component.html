@@ -13,15 +13,11 @@
     <div class="containerCohorte" *ngFor="let cohorte of cohorteService.cohorteGet.data.query_cohortes">
 
         <div class="headerCohorte">
-            <p class="cohorteID">
-                ID Cohorte: {{ cohorte.id_cohorte }}
-            </p>
-
-            <span class="headerPipe">|</span>
-
             <p class="cohorteName">
-                Nombre: {{ cohorte.nombre_cohorte }}
+                {{ cohorte.nombre_cohorte }}
             </p>
+            <span class="headerPipe">|</span>
+            <p>conceptos ({{ cohorteService.getNumeroConceptos(cohorte.id_cohorte) }})</p>
 
             <fa-icon class="iconModify" [icon]="faPen" title="Modificar esta cohorte"></fa-icon>
             <fa-icon class="iconRemove" [icon]="faTrash" title="Eliminar esta cohorte"
