@@ -16,12 +16,18 @@
                     <mat-expansion-panel>
                         <mat-expansion-panel-header>
                             <mat-panel-title>
-                                {{cohorte.nombre_cohorte}}
+                                {{cohorte.nombre_cohorte}} ({{ cohorteService.getNumeroConceptos(cohorte.id_cohorte) }})
                             </mat-panel-title>
                             <mat-panel-description>
-                                {{cohorteService.getNumeroConceptos(cohorte.id_cohorte)}}
+
                             </mat-panel-description>
                         </mat-expansion-panel-header>
+                        <div class="botonesCohorte">
+                            <button class="botonAgregarCohorte" mat-raised-button [mat-dialog-close]
+                                (click)="cohorteService.updateCohorte(cohorte.id_cohorte, cohorteService.cohorteActual)">
+                                Agregar a esta cohorte
+                            </button>
+                        </div>
                     </mat-expansion-panel>
 
                 </div>

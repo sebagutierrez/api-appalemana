@@ -92,5 +92,21 @@ module.exports = {
         } catch {
             return res.status(500).json({ message: error.message });
         }
+    },
+
+    updateCohorte: async (req, res) => {
+        try {
+            req.body.cohorteActual.forEach(async termino => {
+                await models.sequelize.query(
+                    `INSERT INTO concepto (concept_id_hiba, termino_preferido, id_cohorte)
+                    VALUES ('${termino.concept_id_HIBA}', '${termino.termino_preferido}', '${req.body.id_cohorte}')
+                    ON CONFLICT DO NOTHING;`
+                )
+            });
+
+            return res.status(201).json({ message: 'Cohorte modificada exitosamente!' });
+        } catch (error) {
+            return res.status(500).json({ error: error.message });
+        }
     }
 }

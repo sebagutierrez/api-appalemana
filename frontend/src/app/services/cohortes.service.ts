@@ -30,6 +30,18 @@ export class CohortesService {
     private router: Router
   ) { }
 
+  updateCohorte(id_cohorte, cohorteActual) {
+    this.http.patch('http://localhost:3000/cohortes/patch', { id_cohorte, cohorteActual })
+      .subscribe(
+        data => console.log("Cohorte modificada exitosamente!"),
+        error => console.log(error),
+        () => {
+          this.removeAllFromCohorte(),
+            this.router.navigateByUrl('/cohortes')
+        }
+      );
+  }
+
   // Obtiene todas las cohortes existentes en la BD.
   getCohorte() {
     this.isDataLoaded = false;
@@ -42,6 +54,19 @@ export class CohortesService {
           console.log(this.cohorteGet)
       }
     );
+  }
+
+  // Retorna el numero de conceptos para cierto id_cohorte dentro del objeto cohorteGet
+  getNumeroConceptos(id_cohorte) {
+    if (this.cohorteGet) {
+      let sum = 0;
+      this.cohorteGet.data.query_conceptos.forEach(concepto => {
+        if (concepto.id_cohorte === id_cohorte) {
+          sum++;
+        }
+      })
+      return sum;
+    }
   }
 
   // Agrega una cohorte a la BD, posteriormente redirige a Ver Cohortes.
@@ -171,15 +196,4 @@ export class CohortesService {
     return this.http.get<Resultado>("http://localhost:3000/cohortes");
   }
 
-  getNumeroConceptos(id_cohorte) {
-    if (this.cohorteGet) {
-      let sum = 0;
-      this.cohorteGet.data.query_conceptos.forEach(concepto => {
-        if (concepto.id_cohorte === id_cohorte) {
-          sum++;
-        }
-      })
-      return sum;
-    }
-  }
 }
