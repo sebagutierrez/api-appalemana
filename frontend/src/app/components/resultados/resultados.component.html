@@ -8,9 +8,14 @@
         <button mat-raised-button class="botonVerCohortes" [routerLink]="['/cohortes']" (click)="showCohorte()">
             Ver cohortes</button>
 
-        <button mat-raised-button class="botonNuevaCohorte" (click)="openDialog()"
+        <button mat-button [matMenuTriggerFor]="chooseAgregarCohorte" class="botonNuevaCohorte"
             [ngStyle]="cohorteService.cohorteActual.length === 0 ? {'background-color':'rgb(112, 112, 112)'} : {'background-color': 'rgb(50, 165, 66)'}">
             Agregar cohorte ({{ cohorteService.cohorteActual.length }})</button>
+
+        <mat-menu #chooseAgregarCohorte>
+            <button [routerLink]="['/cohortes/new']" mat-menu-item>Agregar a nueva cohorte</button>
+            <button [routerLink]="['/cohortes']" mat-menu-item>Agregar a cohorte existente</button>
+        </mat-menu>
 
         <button mat-raised-button class=" botonEliminarCohorte" (click)="cohorteService.removeAllFromCohorte()">
             <fa-icon [icon]="faTrash" (click)="cohorteService.removeAllFromCohorte()"></fa-icon>

@@ -12,7 +12,6 @@ import { BuscadorComponent } from './components/buscador/buscador.component';
 import { ResultadosComponent, DialogAgregarCohorte } from './components/resultados/resultados.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { CohortesComponent } from './components/cohortes/cohortes.component';
-import { AgregarcohorteComponent } from './components/agregarcohorte/agregarcohorte.component';
 import { NuevacohorteComponent } from './components/nuevacohorte/nuevacohorte.component';
 
 
@@ -26,6 +25,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatMenuModule } from '@angular/material/menu';
+
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
@@ -38,7 +39,6 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     NavbarComponent,
     CohortesComponent,
     NuevacohorteComponent,
-    AgregarcohorteComponent,
   ],
   imports: [
     BrowserModule,
@@ -56,6 +56,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     MatInputModule,
     MatAutocompleteModule,
     MatDialogModule,
+    MatMenuModule,
     ReactiveFormsModule,
     HttpClientModule,
   ],

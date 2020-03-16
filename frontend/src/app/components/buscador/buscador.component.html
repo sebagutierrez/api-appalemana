@@ -2,11 +2,11 @@
     <form [formGroup]='searchForm'>
         <input matInput formControlName='searchInput' [matAutocomplete]="auto" autofocus
             placeholder="Ingrese un término clínico" (keyup.enter)="onNewSearch()" value="">
-    </form>
 
-    <button class="searchButton" type='button'>
-        <fa-icon [icon]="faSearch" (click)="onNewSearch()"></fa-icon>
-    </button>
+        <button class="searchButton" type='button'>
+            <fa-icon [icon]="faSearch" (click)="onNewSearch()"></fa-icon>
+        </button>
+    </form>
 </div>
 
 
