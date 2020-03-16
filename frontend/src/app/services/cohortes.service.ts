@@ -30,7 +30,11 @@ export class CohortesService {
     private router: Router
   ) { }
 
+  // Modifica cierta cohorte por la cohorte actual. Si existen conflictos, los omite (solamente agrega).
   updateCohorte(id_cohorte, cohorteActual) {
+    if (cohorteActual.length === 0) {
+      return;
+    }
     this.http.patch('http://localhost:3000/cohortes/patch', { id_cohorte, cohorteActual })
       .subscribe(
         data => console.log("Cohorte modificada exitosamente!"),
