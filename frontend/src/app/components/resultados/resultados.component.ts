@@ -66,7 +66,9 @@ export class ResultadosComponent implements OnInit {
   }
 
   openDialog() {
-    const dialogRef = this.dialog.open(DialogAgregarCohorte);
+    const dialogRef = this.dialog.open(DialogAgregarCohorteExistente, {
+      width: '600px'
+    });
   }
 
 
@@ -78,4 +80,12 @@ export class ResultadosComponent implements OnInit {
   templateUrl: 'resultados-dialog-agregar-cohorte.html',
   styleUrls: ['resultados-dialog-agregar-cohorte.css']
 })
-export class DialogAgregarCohorte { }
+export class DialogAgregarCohorteExistente implements OnInit {
+
+  constructor(public cohorteService: CohortesService) { }
+
+  ngOnInit(): void {
+    this.cohorteService.getCohorte();
+  }
+
+}

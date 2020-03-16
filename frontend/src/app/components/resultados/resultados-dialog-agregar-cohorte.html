@@ -1,8 +1,32 @@
-<div mat-dialog-content>
-    <button class="botonNuevaCohorte" mat-button [routerLink]="['/cohortes/new']" [mat-dialog-close]="true">
-        Agregar a nueva cohorte
-    </button>
-    <button class="botonCohorteExistente" mat-button [routerLink]="['/cohortes']" [mat-dialog-close]="true">
-        Agregar a una cohorte existente
-    </button>
+<div class="modal">
+    <div mat-dialog-title>
+        <ng-template #loading>
+            <mat-progress-bar mode="query"></mat-progress-bar>
+        </ng-template>
+        <h2>Agregar a una cohorte existente</h2>
+    </div>
+
+    <div mat-dialog-content>
+
+        <div class="container" *ngIf="cohorteService.isDataLoaded; else loading">
+
+            <mat-accordion>
+                <div class="cohorte" *ngFor="let cohorte of cohorteService.cohorteGet.data.query_cohortes">
+
+                    <mat-expansion-panel>
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                {{cohorte.nombre_cohorte}}
+                            </mat-panel-title>
+                            <mat-panel-description>
+                                {{cohorteService.getNumeroConceptos(cohorte.id_cohorte)}}
+                            </mat-panel-description>
+                        </mat-expansion-panel-header>
+                    </mat-expansion-panel>
+
+                </div>
+            </mat-accordion>
+
+        </div>
+    </div>
 </div>

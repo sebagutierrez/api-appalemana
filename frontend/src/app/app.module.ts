@@ -9,7 +9,7 @@ import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BuscadorComponent } from './components/buscador/buscador.component';
-import { ResultadosComponent, DialogAgregarCohorte } from './components/resultados/resultados.component';
+import { ResultadosComponent, DialogAgregarCohorteExistente } from './components/resultados/resultados.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { CohortesComponent } from './components/cohortes/cohortes.component';
 import { NuevacohorteComponent } from './components/nuevacohorte/nuevacohorte.component';
@@ -35,7 +35,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     AppComponent,
     BuscadorComponent,
     ResultadosComponent,
-    DialogAgregarCohorte,
+    DialogAgregarCohorteExistente,
     NavbarComponent,
     CohortesComponent,
     NuevacohorteComponent,

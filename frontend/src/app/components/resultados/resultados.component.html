@@ -14,7 +14,7 @@
 
         <mat-menu #chooseAgregarCohorte>
             <button [routerLink]="['/cohortes/new']" mat-menu-item>Agregar a nueva cohorte</button>
-            <button [routerLink]="['/cohortes']" mat-menu-item>Agregar a cohorte existente</button>
+            <button (click)="openDialog()" mat-menu-item>Agregar a cohorte existente</button>
         </mat-menu>
 
         <button mat-raised-button class=" botonEliminarCohorte" (click)="cohorteService.removeAllFromCohorte()">

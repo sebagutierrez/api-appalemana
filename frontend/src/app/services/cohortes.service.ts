@@ -170,4 +170,16 @@ export class CohortesService {
   getCohortes() {
     return this.http.get<Resultado>("http://localhost:3000/cohortes");
   }
+
+  getNumeroConceptos(id_cohorte) {
+    if (this.cohorteGet) {
+      let sum = 0;
+      this.cohorteGet.data.query_conceptos.forEach(concepto => {
+        if (concepto.id_cohorte === id_cohorte) {
+          sum++;
+        }
+      })
+      return sum;
+    }
+  }
 }
