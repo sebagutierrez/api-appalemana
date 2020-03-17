@@ -9,7 +9,7 @@
     </div>
 </div> -->
 
-<div class="container" *ngIf="cohorteService.isDataLoaded; else loading">
+<!-- <div class="container" *ngIf="cohorteService.isDataLoaded; else loading">
     <div class="containerCohorte" *ngFor="let cohorte of cohorteService.cohorteGet.data.query_cohortes">
 
         <div class="headerCohorte">
@@ -29,6 +29,37 @@
         <div class="bodyCohorte">
             <div *ngFor="let concepto of cohorteService.cohorteGet.data.query_conceptos">
                 <span class="concepto" *ngIf="concepto.id_cohorte === cohorte.id_cohorte">
+                    <a class="links"
+                        [routerLink]="['/results/', concepto.termino_preferido]">{{ concepto.termino_preferido }}</a>
+                </span>
+            </div>
+        </div>
+
+    </div>
+</div> -->
+
+<!-- -------------------------------------------------------- -->
+
+<div class="container" *ngIf="cohorteService.isDataLoaded; else loading">
+    <div class="containerCohorte" *ngFor="let cohorte of cohorteService.cohorteGet.data.cohortes">
+
+        <div class="headerCohorte">
+            <p class="cohorteName">
+                {{ cohorte.cohorte.nombre_cohorte }}
+            </p>
+            <span class="headerPipe">|</span>
+            <p>conceptos ({{ cohorteService.getNumeroConceptos(cohorte.cohorte.id_cohorte) }})</p>
+
+            <fa-icon class="iconModify" [icon]="faPen" title="Modificar esta cohorte"></fa-icon>
+            <fa-icon class="iconRemove" [icon]="faTrash" title="Eliminar esta cohorte"
+                (click)="removeCohorte(cohorte.cohorte.id_cohorte)"></fa-icon>
+        </div>
+
+        <hr>
+
+        <div class="bodyCohorte">
+            <div *ngFor="let concepto of cohorte.conceptos">
+                <span class="concepto">
                     <a class="links"
                         [routerLink]="['/results/', concepto.termino_preferido]">{{ concepto.termino_preferido }}</a>
                 </span>

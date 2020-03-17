@@ -35,6 +35,7 @@ export class CohortesService {
     if (cohorteActual.length === 0) {
       return;
     }
+    console.log(id_cohorte);
     this.http.patch('http://localhost:3000/cohortes/patch', { id_cohorte, cohorteActual })
       .subscribe(
         data => console.log("Cohorte modificada exitosamente!"),
@@ -64,9 +65,13 @@ export class CohortesService {
   getNumeroConceptos(id_cohorte) {
     if (this.cohorteGet) {
       let sum = 0;
-      this.cohorteGet.data.query_conceptos.forEach(concepto => {
-        if (concepto.id_cohorte === id_cohorte) {
-          sum++;
+      let found = false;
+      this.cohorteGet.data.cohortes.forEach(cohorte => {
+        if (cohorte.cohorte.id_cohorte === id_cohorte) {
+          cohorte.conceptos.forEach(concepto => {
+            sum++;
+          });
+          return sum;
         }
       })
       return sum;

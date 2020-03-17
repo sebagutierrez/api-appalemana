@@ -6,7 +6,13 @@ module.exports = {
 
     getCohortes: async (req, res) => {
         try {
-            const query_cohortes = await models.sequelize.query(
+
+            query_cohortes = {};
+            query_conceptos = {};
+
+            cohortes = [];
+
+            await models.sequelize.query(
 
                 `SELECT * FROM cohorte 
                 ORDER BY id_cohorte DESC;`,
@@ -14,20 +20,41 @@ module.exports = {
                 {
                     type: models.QueryTypes.SELECT
                 }
-            );
+            ).then(cohortes => query_cohortes = cohortes);
 
-            const query_conceptos = await models.sequelize.query(
+            await models.sequelize.query(
                 `SELECT * FROM concepto
                 ORDER BY termino_preferido ASC;`,
                 {
                     type: models.QueryTypes.SELECT
                 }
-            )
+            ).then(conceptos => query_conceptos = conceptos);
+
+            try {
+                query_cohortes.forEach(cohorte => {
+
+                    objetoCohorte = {
+                        cohorte: {},
+                        conceptos: []
+                    };
+
+                    objetoCohorte.cohorte = cohorte;
+
+                    query_conceptos.forEach(concepto => {
+                        if (concepto.id_cohorte === cohorte.id_cohorte) {
+                            objetoCohorte.conceptos.push(concepto);
+                        }
+                    });
+
+                    cohortes.push(objetoCohorte);
+                });
+            } catch (err) {
+                console.log(err);
+            }
 
             return res.status(200).json({
                 data: {
-                    query_cohortes,
-                    query_conceptos
+                    cohortes
                 },
                 message: 'Cohortes obtenidas correctamente!',
             });
@@ -102,6 +129,7 @@ module.exports = {
                     VALUES ('${termino.concept_id_HIBA}', '${termino.termino_preferido}', '${req.body.id_cohorte}')
                     ON CONFLICT DO NOTHING;`
                 )
+                console.log(termino);
             });
 
             return res.status(201).json({ message: 'Cohorte modificada exitosamente!' });
