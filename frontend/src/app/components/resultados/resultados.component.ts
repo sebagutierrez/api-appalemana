@@ -65,6 +65,10 @@ export class ResultadosComponent implements OnInit {
     console.log(this.cohorteService.cohorteActual);
   }
 
+  isEnabled() {
+    return this.cohorteService.cohorteActual.length > 0;
+  }
+
   openDialog() {
     const dialogRef = this.dialog.open(DialogAgregarCohorteExistente, {
       width: '600px'

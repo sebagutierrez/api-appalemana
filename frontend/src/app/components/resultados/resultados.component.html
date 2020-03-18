@@ -5,11 +5,14 @@
 <div class="barraOpciones" *ngIf="isDataLoaded; else loading">
     <div class="botonesCohorte">
 
-        <button mat-raised-button class="botonVerCohortes" [routerLink]="['/cohortes']" (click)="showCohorte()">
+        <button mat-raised-button class="botonVerCohortes" [routerLink]="['/cohortes']" (click)="showCohorte()"
+            title="Mostrar todas las cohortes">
             Ver cohortes</button>
 
         <button mat-button [matMenuTriggerFor]="chooseAgregarCohorte" class="botonNuevaCohorte"
-            [ngStyle]="cohorteService.cohorteActual.length === 0 ? {'background-color':'rgb(112, 112, 112)'} : {'background-color': 'rgb(50, 165, 66)'}">
+            [disabled]="!isEnabled()" [ngClass]="{disabled : !isEnabled()}"
+            [ngStyle]="cohorteService.cohorteActual.length === 0 ? {'color':'white'} : {'color' : 'white'}"
+            title="{{!isEnabled() ? 'Agregue al menos un término a la cohorte' : ''}}">
             Agregar cohorte ({{ cohorteService.cohorteActual.length }})</button>
 
         <mat-menu #chooseAgregarCohorte>
@@ -17,7 +20,8 @@
             <button (click)="openDialog()" mat-menu-item>Agregar a cohorte existente</button>
         </mat-menu>
 
-        <button mat-raised-button class=" botonEliminarCohorte" (click)="cohorteService.removeAllFromCohorte()">
+        <button mat-raised-button class=" botonEliminarCohorte" (click)="cohorteService.removeAllFromCohorte()"
+            title="Eliminar todos los términos de la cohorte actual ({{cohorteService.cohorteActual.length}})">
             <fa-icon [icon]="faTrash" (click)="cohorteService.removeAllFromCohorte()"></fa-icon>
         </button>
 

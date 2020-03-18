@@ -13,21 +13,39 @@
 
 .botonNuevaCohorte {
     margin: 5px;
-    background-color: rgb(50, 165, 66);
+    background-color: rgb(25, 155, 42);
     color: rgb(255, 255, 255);
-    font-weight: bold;
+    /* font-weight: bold; */
+    box-shadow: none;
+}
+
+.disabled {
+    background-color: grey;
+    color: white;
 }
 
 .botonVerCohortes {
     margin: 5px;
-    background-color: rgb(46, 114, 55);
-    color: rgb(255, 255, 255);
-    font-weight: bold;
+    background-color: rgba(255, 255, 255, 0);
+    border: 1px solid rgba(46, 114, 55, 0.671);
+    color: rgb(46, 114, 55);
+    /* font-weight: bold; */
+    box-shadow: none;
+}
+
+.botonVerCohortes:hover {
+    border: 1px solid rgb(46, 114, 55);
 }
 
 .botonEliminarCohorte {
     margin: 5px;
     background-color: rgb(255, 255, 255);
+    border: 1px solid rgba(0, 0, 0, 0.26);
+    box-shadow: none;
+}
+
+.botonEliminarCohorte:hover {
+    border: 1px solid rgba(0, 0, 0, 0.432);
 }
 
 fa-icon {
@@ -40,6 +58,7 @@ fa-icon {
 .titleRow {
     display: flex;
     flex-direction: row;
+    margin-bottom: 5px;
 }
 
 .titleRowCohorteOpciones {
@@ -48,28 +67,31 @@ fa-icon {
 
 .botonSelectAll {
     margin-right: 10px;
-    height: 2rem;
-    font-weight: bold;
+    height: 2.3rem;
     color: white;
-    background-color: rgb(152, 115, 185);
+    font-weight: bold;
+    background-color: rgb(209, 68, 162);
+    border: 1px solid rgb(209, 68, 162);
+    box-shadow: none;
 }
 
 .botonDeselectAll {
     margin-right: 10px;
-    height: 2rem;
-    font-weight: bold;
-    color: white;
-    background-color: rgb(152, 115, 185);
+    height: 2.3rem;
+    color: rgb(209, 68, 162);
+    background-color: white;
+    border: 1px solid rgb(209, 68, 162);
+    box-shadow: none;
 }
 
 .padres {
     width:  33%;
-    border: 1px solid #00000054;
+    border: 1px solid #00000044;
     border-radius: 7px;
     padding-right: 1rem;
     margin: 1rem;
     box-shadow: 6px 6px 6px -5px rgba(92, 92, 92, 0.75);
-    background-color: #ddf0dda9;
+    background-color: #dbffe252;
 }
 
 .termino {
@@ -84,12 +106,12 @@ fa-icon {
 
 .hijos {
     width: 33%;
-    border: 1px solid #00000054;
+    border: 1px solid #00000044;
     border-radius: 7px;
     padding-right: 1rem;
     margin: 1rem;
     box-shadow: 6px 6px 6px -5px rgba(92, 92, 92, 0.75);
-    background-color: #ddf0dda9;
+    background-color: #dbffe252;
 }
 
 .padres:hover {
