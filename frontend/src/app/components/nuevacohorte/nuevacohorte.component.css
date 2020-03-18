@@ -15,9 +15,14 @@
 
 .botonVerCohortes {
     margin: 5px;
-    background-color: rgb(46, 114, 55);
-    color: rgb(255, 255, 255);
-    font-weight: bold;
+    background-color: rgba(255, 255, 255, 0);
+    border: 1px solid rgba(46, 114, 55, 0.671);
+    color: rgb(46, 114, 55);
+    box-shadow: none;
+}
+
+.botonVerCohortes:hover {
+    border: 1px solid rgb(46, 114, 55);
 }
 
 
@@ -30,14 +35,14 @@
     margin-left: 33%;
     margin-top: 15px;
     width: 36%;
-    border: 1px solid #00000044;
+    border: 1px solid #0000001c;
     border-radius: 7px;
-    box-shadow: 6px 6px 6px -5px rgba(92, 92, 92, 0.75);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.322);
     background-color: rgba(255, 255, 255, 0.644);
 }
 
 .container:hover {
-    border: 1px solid #00000079;
+    border: 1px solid #00000065;
 }
 
 /* Header nueva cohorte*/
@@ -91,9 +96,9 @@ span {
     margin-right: 7%;
 }
 
-h2 {
+h2.crearCohorteTitle {
     margin-left: 6%;
-
+    font-weight: lighter;
 }
 
 ul {

@@ -13,7 +13,7 @@
     <div class="cohorte">
 
         <div class="headerCohorte">
-            <h2>Crear nueva cohorte ({{cohorteService.cohorteActual.length}})</h2>
+            <h2 class="crearCohorteTitle">Crear nueva cohorte ({{cohorteService.cohorteActual.length}})</h2>
             <span *ngIf="cohorteService.nombreCohorte && cohorteService.cohorteActual.length; else buttonDisabled">
                 <fa-icon class="iconEnabled" [icon]="faCheckCircle"
                     (click)="cohorteService.postCohorte(cohorteService.nombreCohorte, cohorteService.cohorteActual)">

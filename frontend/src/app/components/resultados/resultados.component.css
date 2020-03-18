@@ -86,44 +86,44 @@ fa-icon {
 
 .padres {
     width:  33%;
-    border: 1px solid #00000044;
+    border: 1px solid #0000001c;
     border-radius: 7px;
     padding-right: 1rem;
     margin: 1rem;
-    box-shadow: 6px 6px 6px -5px rgba(92, 92, 92, 0.75);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.425); 
     background-color: #dbffe252;
 }
 
 .termino {
     width: 33%;
-    border: 1px solid #00000044;
+    border: 1px solid #0000001c;
     border-radius: 7px;
     padding-right: 1rem;
     margin: 1rem;
-    box-shadow: 6px 6px 6px -5px rgba(92, 92, 92, 0.75);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.322); 
     background-color: rgba(255, 255, 255, 0.644);
 }
 
 .hijos {
     width: 33%;
-    border: 1px solid #00000044;
+    border: 1px solid #0000001c;
     border-radius: 7px;
     padding-right: 1rem;
     margin: 1rem;
-    box-shadow: 6px 6px 6px -5px rgba(92, 92, 92, 0.75);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.425);
     background-color: #dbffe252;
 }
 
 .padres:hover {
-    border: 1px solid #00000079;
+    border: 1px solid #00000065;
 }
 
 .termino:hover {
-    border: 1px solid #00000079;
+    border: 1px solid #00000065;
 }
 
 .hijos:hover {
-    border: 1px solid #00000079;
+    border: 1px solid #00000065;
 }
 
 h2.padresTitle {

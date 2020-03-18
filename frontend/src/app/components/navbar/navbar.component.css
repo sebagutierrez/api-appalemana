@@ -9,6 +9,10 @@ mat-toolbar {
     cursor: pointer;
 }
 
+.title:hover {
+    color: #dbffe9;
+}
+
 app-buscador {
     margin-left: auto;
 }

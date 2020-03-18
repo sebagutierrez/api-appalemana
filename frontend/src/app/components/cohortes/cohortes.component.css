@@ -69,15 +69,9 @@ ul {
     margin: 1rem;
     margin-left: 33%;
     width: 36%;
-    /* border: 1px solid #35a560c7; */
-    border: 1px solid #00000044;
     border-radius: 7px;
-    box-shadow: 6px 6px 6px -5px rgba(92, 92, 92, 0.75);   
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.322);   
     background-color: rgba(255, 255, 255, 0.644);
-}
-
-.containerCohorte:hover {
-    border: 1px solid #35a560c7;
 }
 
 .cohorteID {
@@ -86,6 +80,8 @@ ul {
 
 .cohorteName {
     font-size: 20px;
+    font-weight: bold;
+    color: #4a8862;
 }
 
 .headerPipe {

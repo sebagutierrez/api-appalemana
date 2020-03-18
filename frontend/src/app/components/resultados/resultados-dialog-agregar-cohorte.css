@@ -1,9 +1,10 @@
 .botonAgregarCohorte {
     margin-top: 15px;
     margin-left: 30%;
-    background-color: rgb(152, 115, 185);
-    color: white;
-    font-weight: bold;
+    background-color: white;
+    border: 1px solid rgb(209, 68, 162);
+    color: rgb(209, 68, 162);
+    box-shadow: none;
 }
 
 input {
