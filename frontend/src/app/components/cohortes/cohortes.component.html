@@ -40,8 +40,13 @@
 
 <!-- -------------------------------------------------------- -->
 
+
+
 <div class="container" *ngIf="cohorteService.isDataLoaded; else loading">
-    <div class="containerCohorte" *ngFor="let cohorte of cohorteService.cohorteGet.data.cohortes">
+
+    <input placeholder="Busque por nombre de cohorte o término" [(ngModel)]="filterInput">
+
+    <div class="containerCohorte" *ngFor="let cohorte of cohorteService.cohorteGet.data.cohortes | filter:filterInput">
 
         <div class="headerCohorte">
             <p class="cohorteName">

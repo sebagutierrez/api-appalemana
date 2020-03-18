@@ -4,18 +4,25 @@
     background-color: rgb(152, 115, 185);
     color: white;
     font-weight: bold;
-    /* background-color: white;
-    color: black; */
 }
 
-/* .mat-expansion-panel-header {
-    background-color: rgb(201, 123, 123);
-} */
+input {
+    /* margin-top: 1rem; */
+    margin-bottom: 10px;
+    padding: 5px 5px 5px 5px;
+    outline: none;
+    height: 25px;
+    width: 525px;
+    border: 1px solid rgba(0, 0, 0, 0.233);
+    border-radius: 15px;
+    text-indent: 10px;
+}
+
+input:focus {
+    border-color: rgba(0, 0, 0, 0.39);
+}
 
 .mat-expansion-panel.mat-expanded {
     background-color: rgba(146, 146, 146, 0.062);
 }
 
-/* .mat-expansion-panel-.mat-expanded {
-    background-color: rgb(221, 221, 221);
-} */

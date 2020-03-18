@@ -11,8 +11,10 @@ export interface Concepto {
 
 export interface Cohortes {
     data: {
-        query_cohortes: Cohorte[],
-        query_conceptos: Concepto[]
+        cohortes: [{
+            cohorte: Cohorte,
+            conceptos: Concepto[]
+        }]
     },
     message: string
 }

@@ -73,6 +73,8 @@ export class ResultadosComponent implements OnInit {
 
 
 
+
+
 }
 
 @Component({
@@ -82,10 +84,13 @@ export class ResultadosComponent implements OnInit {
 })
 export class DialogAgregarCohorteExistente implements OnInit {
 
+  filterInput = "";
+
   constructor(public cohorteService: CohortesService) { }
 
   ngOnInit(): void {
-    this.cohorteService.getCohorte();
+    this.filterInput = "";
+    this.cohorteService.getCohortes();
   }
 
 }

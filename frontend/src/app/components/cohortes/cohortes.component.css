@@ -1,3 +1,30 @@
+p.totalCohortes {
+    margin-left: 33%;
+    margin-top: 1rem;
+    font-size: 18px;
+    font-weight: lighter;
+}
+
+input {
+    margin-top: 1rem;
+    margin-left: 33%;
+    padding: 5px 5px 5px 5px;
+    outline: none;
+    height: 25px;
+    width: 730px;
+    border: 1px solid rgba(0, 0, 0, 0.233);
+    border-radius: 15px;
+    text-indent: 10px;
+}
+
+input:focus {
+    border-color: rgba(0, 0, 0, 0.39);
+}
+
+/* input::placeholder {
+    text-indent: ;
+} */
+
 ::ng-deep .mat-progress-bar-fill::after {
     background-color: rgb(103, 190, 107);
 }
@@ -102,6 +129,10 @@ hr {
 .links {
     text-decoration: none;
     color: #003cbd;
+}
+
+.links:hover {
+    text-decoration: underline;
 }
 
 .a:visited {

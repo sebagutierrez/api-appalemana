@@ -94,6 +94,10 @@ fa-icon {
     color: #003cbd;
 }
 
+.links:hover {
+    text-decoration: underline;
+}
+
 h2 {
     font-weight: bold;
     color: #4a8862;

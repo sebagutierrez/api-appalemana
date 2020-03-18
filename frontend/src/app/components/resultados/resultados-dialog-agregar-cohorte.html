@@ -9,9 +9,11 @@
     <div mat-dialog-content>
 
         <div class="container" *ngIf="cohorteService.isDataLoaded; else loading">
+            <input placeholder="Busque por nombre de cohorte o término" [(ngModel)]="filterInput">
 
             <mat-accordion>
-                <div class="cohorte" *ngFor="let cohorte of cohorteService.cohorteGet.data.cohortes">
+                <div class="cohorte"
+                    *ngFor="let cohorte of cohorteService.cohorteGet.data.cohortes | filter:filterInput">
 
                     <mat-expansion-panel>
                         <mat-expansion-panel-header>

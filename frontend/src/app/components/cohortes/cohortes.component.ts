@@ -16,12 +16,15 @@ export class CohortesComponent implements OnInit {
   faPen = faPen;
   faTrash = faTrash;
 
+  filterInput = "";
+
   constructor(
     public cohorteService: CohortesService
   ) { }
 
   ngOnInit(): void {
-    this.cohorteService.getCohorte();
+    this.filterInput = "";
+    this.cohorteService.getCohortes();
   }
 
   removeCohorte(id_cohorte) {

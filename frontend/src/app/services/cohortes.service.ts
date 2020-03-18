@@ -12,6 +12,7 @@ export class CohortesService {
 
   nombreCohorte = '';
   cohorteActual = [];
+  filterInput = '';
 
   cohortePost = {
     nombre: '',
@@ -41,22 +42,22 @@ export class CohortesService {
         data => console.log("Cohorte modificada exitosamente!"),
         error => console.log(error),
         () => {
-          this.removeAllFromCohorte(),
-            this.router.navigateByUrl('/cohortes')
+          this.removeAllFromCohorte();
+          this.router.navigateByUrl('/cohortes');
         }
       );
   }
 
   // Obtiene todas las cohortes existentes en la BD.
-  getCohorte() {
+  getCohortes() {
     this.isDataLoaded = false;
     this.http.get<Cohortes>('http://localhost:3000/cohortes').subscribe(
       data => this.cohorteGet = data,
       error => console.log(error),
       () => {
-        this.isDataLoaded = true,
-          console.log('Cohortes cargadas correctamente!'),
-          console.log(this.cohorteGet)
+        this.isDataLoaded = true;
+        console.log('Cohortes cargadas correctamente!');
+        console.log(this.cohorteGet);
       }
     );
   }
@@ -78,6 +79,11 @@ export class CohortesService {
     }
   }
 
+  // Retorna el número de cohortes en la BD
+  getNumeroCohortes() {
+    return this.cohorteGet.data.cohortes.length
+  }
+
   // Agrega una cohorte a la BD, posteriormente redirige a Ver Cohortes.
   postCohorte(nombreCohorte, cohorteActual) {
 
@@ -92,8 +98,9 @@ export class CohortesService {
         data => console.log(data),
         error => console.log(error),
         () => {
-          this.removeAllFromCohorte(),
-            this.router.navigateByUrl('/cohortes')
+          this.removeAllFromCohorte();
+          this.nombreCohorte = "";
+          this.router.navigateByUrl('/cohortes');
         }
       );
   }
@@ -104,7 +111,7 @@ export class CohortesService {
       .subscribe(
         data => console.log("Eliminado correctamente"),
         error => console.log(error),
-        () => this.getCohorte()
+        () => this.getCohortes()
       );
   }
 
@@ -192,17 +199,4 @@ export class CohortesService {
 
     });
   }
-
-  // 
-  verEstado(array) {
-    array.forEach(element => {
-      console.log(element);
-    });
-  }
-
-  // Component Cohortes
-  getCohortes() {
-    return this.http.get<Resultado>("http://localhost:3000/cohortes");
-  }
-
 }

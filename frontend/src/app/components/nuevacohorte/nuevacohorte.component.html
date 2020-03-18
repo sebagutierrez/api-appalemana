@@ -29,7 +29,7 @@
         <div class="nombreCohorte">
             <mat-form-field appearance="legacy">
                 <mat-label>Nombre de la cohorte *</mat-label>
-                <input matInput [(ngModel)]="cohorteService.nombreCohorte">
+                <input matInput value="" autocomplete="off" [(ngModel)]="cohorteService.nombreCohorte">
                 <mat-hint>*Requerido</mat-hint>
             </mat-form-field>
         </div>

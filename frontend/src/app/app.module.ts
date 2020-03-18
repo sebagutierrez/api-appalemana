@@ -29,6 +29,7 @@ import { MatMenuModule } from '@angular/material/menu';
 
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { Ng2SearchPipeModule } from 'ng2-search-filter'
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     FormsModule,
     BrowserAnimationsModule,
     FontAwesomeModule,
+    Ng2SearchPipeModule,
     RouterModule,
     MatToolbarModule,
     MatCheckboxModule,
