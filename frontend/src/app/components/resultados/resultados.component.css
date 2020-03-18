@@ -37,15 +37,6 @@ fa-icon {
     cursor: pointer;
 }
 
-.padres {
-    width:  33%;
-    border: 1px solid #35a560c7;
-    border-radius: 7px;
-    padding-right: 1rem;
-    margin: 1rem;
-    box-shadow: 6px 6px 6px -5px rgba(92, 92, 92, 0.75);
-}
-
 .titleRow {
     display: flex;
     flex-direction: row;
@@ -71,22 +62,61 @@ fa-icon {
     background-color: rgb(152, 115, 185);
 }
 
-.termino {
-    width: 33%;
-    border: 1px solid #969696c7;
+.padres {
+    width:  33%;
+    border: 1px solid #00000054;
     border-radius: 7px;
     padding-right: 1rem;
     margin: 1rem;
     box-shadow: 6px 6px 6px -5px rgba(92, 92, 92, 0.75);
+    background-color: #ddf0dda9;
+}
+
+.termino {
+    width: 33%;
+    border: 1px solid #00000044;
+    border-radius: 7px;
+    padding-right: 1rem;
+    margin: 1rem;
+    box-shadow: 6px 6px 6px -5px rgba(92, 92, 92, 0.75);
+    background-color: rgba(255, 255, 255, 0.644);
 }
 
 .hijos {
     width: 33%;
-    border: 1px solid #35a560c7;
+    border: 1px solid #00000054;
     border-radius: 7px;
     padding-right: 1rem;
     margin: 1rem;
     box-shadow: 6px 6px 6px -5px rgba(92, 92, 92, 0.75);
+    background-color: #ddf0dda9;
+}
+
+.padres:hover {
+    border: 1px solid #00000079;
+}
+
+.termino:hover {
+    border: 1px solid #00000079;
+}
+
+.hijos:hover {
+    border: 1px solid #00000079;
+}
+
+h2.padresTitle {
+    font-weight: bold;
+    color: #2b7c4a;
+}
+
+h2.terminoTitle {
+    font-weight: bold;
+    color: #4a8862;
+}
+
+h2.hijosTitle {
+    font-weight: bold;
+    color: #2b7c4a;
 }
 
 .links {
@@ -96,11 +126,6 @@ fa-icon {
 
 .links:hover {
     text-decoration: underline;
-}
-
-h2 {
-    font-weight: bold;
-    color: #4a8862;
 }
 
 p.loading {
@@ -122,8 +147,14 @@ ul {
 
 ::ng-deep .mat-progress-bar-fill::after {
     background-color: rgb(103, 190, 107);
+    height: 1px;
 }
 
 ::ng-deep .mat-progress-bar-buffer {
     background: #E4E8EB;
+    height: 1px;
+}
+
+::ng-deep .mat-progress-bar {
+    height: 1px;
 }

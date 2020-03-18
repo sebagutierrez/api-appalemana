@@ -2,46 +2,6 @@
     <mat-progress-bar mode="query"></mat-progress-bar>
 </ng-template>
 
-<!-- <div class="barraOpciones">
-    <div class="botonesCohorte">
-        <button mat-raised-button>Eliminar cohorte</button>
-        <button mat-raised-button>Modificar cohorte</button>
-    </div>
-</div> -->
-
-<!-- <div class="container" *ngIf="cohorteService.isDataLoaded; else loading">
-    <div class="containerCohorte" *ngFor="let cohorte of cohorteService.cohorteGet.data.query_cohortes">
-
-        <div class="headerCohorte">
-            <p class="cohorteName">
-                {{ cohorte.nombre_cohorte }}
-            </p>
-            <span class="headerPipe">|</span>
-            <p>conceptos ({{ cohorteService.getNumeroConceptos(cohorte.id_cohorte) }})</p>
-
-            <fa-icon class="iconModify" [icon]="faPen" title="Modificar esta cohorte"></fa-icon>
-            <fa-icon class="iconRemove" [icon]="faTrash" title="Eliminar esta cohorte"
-                (click)="removeCohorte(cohorte.id_cohorte)"></fa-icon>
-        </div>
-
-        <hr>
-
-        <div class="bodyCohorte">
-            <div *ngFor="let concepto of cohorteService.cohorteGet.data.query_conceptos">
-                <span class="concepto" *ngIf="concepto.id_cohorte === cohorte.id_cohorte">
-                    <a class="links"
-                        [routerLink]="['/results/', concepto.termino_preferido]">{{ concepto.termino_preferido }}</a>
-                </span>
-            </div>
-        </div>
-
-    </div>
-</div> -->
-
-<!-- -------------------------------------------------------- -->
-
-
-
 <div class="container" *ngIf="cohorteService.isDataLoaded; else loading">
 
     <input placeholder="Busque por nombre de cohorte o término" [(ngModel)]="filterInput">
