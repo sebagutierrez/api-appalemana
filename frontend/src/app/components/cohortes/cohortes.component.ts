@@ -24,6 +24,7 @@ export class CohortesComponent implements OnInit {
 
   ngOnInit(): void {
     this.filterInput = "";
+    this.cohorteService.isDataLoaded = false;
     this.cohorteService.getCohortes();
   }
 

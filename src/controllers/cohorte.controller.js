@@ -28,7 +28,10 @@ module.exports = {
                 {
                     type: models.QueryTypes.SELECT
                 }
-            ).then(conceptos => query_conceptos = conceptos);
+            ).then(conceptos => {
+                query_conceptos = conceptos;
+                console.log(query_conceptos.length); // el problema es antes de esto
+            });
 
             try {
                 query_cohortes.forEach(cohorte => {
@@ -70,6 +73,8 @@ module.exports = {
     postCohorte: async (req, res) => {
         try {
             const nombreCohorte = req.body.nombre;
+
+            console.log("req.body.terminos.length = " + req.body.terminos.length); // el problema es despues de esto
 
             await models.sequelize.query(
                 `INSERT INTO cohorte (nombre_cohorte)

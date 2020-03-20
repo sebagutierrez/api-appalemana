@@ -50,7 +50,6 @@ export class CohortesService {
 
   // Obtiene todas las cohortes existentes en la BD.
   getCohortes() {
-    this.isDataLoaded = false;
     this.http.get<Cohortes>('http://localhost:3000/cohortes').subscribe(
       data => this.cohorteGet = data,
       error => console.log(error),
@@ -143,10 +142,8 @@ export class CohortesService {
   // Se activa cuando se desata un evento en el checkbox. Si se checkea, se agrega a la cohorte. Si se uncheckea, se elimina.
   onChange($event, termino, array) {
     const index = array.findIndex(term => term === termino);
-    console.log("index = " + index);
+
     array[index].checked = $event.checked;
-    // console.log(array[index]);
-    console.log(`${termino.termino_preferido} está en estado ${termino.checked}`);
 
     if (array[index].checked) {
       this.addToArrayCohorte(array[index]);
@@ -158,20 +155,17 @@ export class CohortesService {
   // Agrega un término al array de cohorte.
   addToArrayCohorte(termino) {
     this.cohorteActual.push(termino);
-    console.log(`Termino (${termino.termino_preferido}) agregado a la cohorte`);
   }
 
   // Elimina un término del array de cohorte.
   removeFromCohorte(termino) {
     this.cohorteActual = this.cohorteActual.filter(term => term.concept_id_HIBA != termino.concept_id_HIBA);
-    console.log(`Termino (${termino.termino_preferido}) removido de la cohorte`);
   }
 
   // Vacía el array de cohorte y setea en falso el atributo checked de cada uno de los elementos en el array.
   removeAllFromCohorte() {
     this.cohorteActual.forEach(element => {
       element.checked = false;
-      console.log(element);
     });
 
     this.cohorteActual = [];
