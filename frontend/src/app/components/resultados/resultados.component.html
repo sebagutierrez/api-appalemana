@@ -2,113 +2,120 @@
     <mat-progress-bar mode="query"></mat-progress-bar>
 </ng-template>
 
-<div class="barraOpciones" *ngIf="isDataLoaded; else loading">
-    <div class="botonesCohorte">
 
-        <button mat-raised-button class="botonVerCohortes" [routerLink]="['/cohortes']" (click)="showCohorte()"
-            title="Mostrar todas las cohortes">
-            Ver cohortes</button>
+<div class="wrapper" *ngIf="isDataLoaded; else loading">
 
-        <button mat-button [matMenuTriggerFor]="chooseAgregarCohorte" class="botonNuevaCohorte"
-            [disabled]="!isEnabled()" [ngClass]="{disabled : !isEnabled()}"
-            [ngStyle]="cohorteService.cohorteActual.length === 0 ? {'color':'white'} : {'color' : 'white'}"
-            title="{{!isEnabled() ? 'Agregue al menos un término a la cohorte' : ''}}">
-            Agregar cohorte ({{ cohorteService.cohorteActual.length }})</button>
+    <div class="barraOpciones">
+        <div class="botonesCohorte">
 
-        <mat-menu #chooseAgregarCohorte>
-            <button [routerLink]="['/cohortes/new']" mat-menu-item>Agregar a nueva cohorte</button>
-            <button (click)="openDialog()" mat-menu-item>Agregar a cohorte existente</button>
-        </mat-menu>
+            <button mat-raised-button class="botonVerCohortes" [routerLink]="['/cohortes']" (click)="showCohorte()"
+                title="Mostrar todas las cohortes">
+                Ver cohortes</button>
 
-        <button mat-raised-button class=" botonEliminarCohorte" (click)="cohorteService.removeAllFromCohorte()"
-            title="Eliminar todos los términos de la cohorte actual ({{cohorteService.cohorteActual.length}})">
-            <fa-icon [icon]="faTrash" (click)="cohorteService.removeAllFromCohorte()"></fa-icon>
-        </button>
+            <button mat-button [matMenuTriggerFor]="chooseAgregarCohorte" class="botonNuevaCohorte"
+                [disabled]="!isEnabled()" [ngClass]="{disabled : !isEnabled()}"
+                [ngStyle]="cohorteService.cohorteActual.length === 0 ? {'color':'white'} : {'color' : 'white'}"
+                title="{{!isEnabled() ? 'Agregue al menos un término a la cohorte' : ''}}">
+                Agregar cohorte ({{ cohorteService.cohorteActual.length }})</button>
 
+            <mat-menu #chooseAgregarCohorte>
+                <button [routerLink]="['/cohortes/new']" mat-menu-item>Agregar a nueva cohorte</button>
+                <button (click)="openDialog()" mat-menu-item>Agregar a cohorte existente</button>
+            </mat-menu>
+
+            <button mat-raised-button class=" botonEliminarCohorte" (click)="cohorteService.removeAllFromCohorte()"
+                title="Eliminar todos los términos de la cohorte actual ({{cohorteService.cohorteActual.length}})">
+                <fa-icon [icon]="faTrash" (click)="cohorteService.removeAllFromCohorte()"></fa-icon>
+            </button>
+
+        </div>
     </div>
-</div>
 
-<div class="container" *ngIf="isDataLoaded; else loading">
-    <div class="padres">
-        <ul>
-            <div class="titleRow">
-                <h2 class="padresTitle">
-                    Padres ({{ cohorteService.resultados.data.query_padres_termino_preferido.length }})
-                </h2>
-                <div class="titleRowCohorteOpciones">
-                    <button mat-raised-button class="botonSelectAll"
-                        (click)="cohorteService.selectAll(cohorteService.resultados.data.query_padres_termino_preferido)">
-                        Select all
-                    </button>
+    <div class="container">
+        <div class="padres">
+            <ul>
+                <div class="titleRow">
+                    <h2 class="padresTitle">
+                        Padres ({{ cohorteService.resultados.data.query_padres_termino_preferido.length }})
+                    </h2>
+                    <div class="titleRowCohorteOpciones">
+                        <button mat-raised-button class="botonSelectAll"
+                            (click)="cohorteService.selectAll(cohorteService.resultados.data.query_padres_termino_preferido)">
+                            Select all
+                        </button>
 
-                    <button mat-raised-button class="botonDeselectAll"
-                        (click)="cohorteService.deselectAll(cohorteService.resultados.data.query_padres_termino_preferido)">
-                        Deselect all
-                    </button>
+                        <button mat-raised-button class="botonDeselectAll"
+                            (click)="cohorteService.deselectAll(cohorteService.resultados.data.query_padres_termino_preferido)">
+                            Deselect all
+                        </button>
+                    </div>
+
                 </div>
 
-            </div>
+                <li *ngFor="let padre of cohorteService.resultados.data.query_padres_termino_preferido">
+                    <mat-checkbox class="checkboxTermino"
+                        (change)="cohorteService.onChange($event, padre, cohorteService.resultados.data.query_padres_termino_preferido)"
+                        [checked]="cohorteService.isChecked(padre)">
 
-            <li *ngFor="let padre of cohorteService.resultados.data.query_padres_termino_preferido">
-                <mat-checkbox class="checkboxTermino"
-                    (change)="cohorteService.onChange($event, padre, cohorteService.resultados.data.query_padres_termino_preferido)"
-                    [checked]="cohorteService.isChecked(padre)">
+                        <a class="links"
+                            [routerLink]="['/results/', padre.termino_preferido]">{{ padre.termino_preferido }}
+                        </a>
+                    </mat-checkbox>
+                </li>
+            </ul>
+        </div>
 
-                    <a class="links" [routerLink]="['/results/', padre.termino_preferido]">{{ padre.termino_preferido }}
-                    </a>
-                </mat-checkbox>
-            </li>
-        </ul>
-    </div>
-
-    <div class="termino">
-        <ul>
-            <h2 class="terminoTitle">
-                Término
-            </h2>
-
-            <li *ngFor="let termino of cohorteService.resultados.data.query_termino_preferido">
-                <mat-checkbox class="checkboxTermino"
-                    (change)="cohorteService.onChange($event, termino, cohorteService.resultados.data.query_termino_preferido)"
-                    [checked]="cohorteService.isChecked(termino)">
-                    <a class="links"
-                        [routerLink]="['/results/', termino.termino_preferido]">{{ termino.termino_preferido }}
-                    </a>
-                    <small><br>ID: {{ termino.concept_id_HIBA }}</small>
-                </mat-checkbox>
-            </li>
-        </ul>
-    </div>
-
-    <div class="hijos">
-        <ul>
-            <div class="titleRow">
-                <h2 class="hijosTitle">
-                    Hijos ({{ cohorteService.resultados.data.query_hijos_termino_preferido.length }})
+        <div class="termino">
+            <ul>
+                <h2 class="terminoTitle">
+                    Término
                 </h2>
 
-                <div class="titleRowCohorteOpciones">
-                    <button mat-raised-button class="botonSelectAll"
-                        (click)="cohorteService.selectAll(cohorteService.resultados.data.query_hijos_termino_preferido)">
-                        Select all
-                    </button>
+                <li *ngFor="let termino of cohorteService.resultados.data.query_termino_preferido">
+                    <mat-checkbox class="checkboxTermino"
+                        (change)="cohorteService.onChange($event, termino, cohorteService.resultados.data.query_termino_preferido)"
+                        [checked]="cohorteService.isChecked(termino)">
+                        <a class="links"
+                            [routerLink]="['/results/', termino.termino_preferido]">{{ termino.termino_preferido }}
+                        </a>
+                        <small><br>ID: {{ termino.concept_id_HIBA }}</small>
+                    </mat-checkbox>
+                </li>
+            </ul>
+        </div>
 
-                    <button mat-raised-button class="botonDeselectAll"
-                        (click)="cohorteService.deselectAll(cohorteService.resultados.data.query_hijos_termino_preferido)">
-                        Deselect all
-                    </button>
+        <div class="hijos">
+            <ul>
+                <div class="titleRow">
+                    <h2 class="hijosTitle">
+                        Hijos ({{ cohorteService.resultados.data.query_hijos_termino_preferido.length }})
+                    </h2>
+
+                    <div class="titleRowCohorteOpciones">
+                        <button mat-raised-button class="botonSelectAll"
+                            (click)="cohorteService.selectAll(cohorteService.resultados.data.query_hijos_termino_preferido)">
+                            Select all
+                        </button>
+
+                        <button mat-raised-button class="botonDeselectAll"
+                            (click)="cohorteService.deselectAll(cohorteService.resultados.data.query_hijos_termino_preferido)">
+                            Deselect all
+                        </button>
+                    </div>
+
                 </div>
 
-            </div>
-
-            <li *ngFor="let hijo of cohorteService.resultados.data.query_hijos_termino_preferido">
-                <mat-checkbox class="checkboxTermino"
-                    (change)="cohorteService.onChange($event, hijo, cohorteService.resultados.data.query_hijos_termino_preferido)"
-                    [checked]="cohorteService.isChecked(hijo)">
-                    <a class="links" [routerLink]="['/results/', hijo.termino_preferido]">{{ hijo.termino_preferido }}
-                    </a>
-                </mat-checkbox>
-            </li>
-        </ul>
+                <li *ngFor="let hijo of cohorteService.resultados.data.query_hijos_termino_preferido">
+                    <mat-checkbox class="checkboxTermino"
+                        (change)="cohorteService.onChange($event, hijo, cohorteService.resultados.data.query_hijos_termino_preferido)"
+                        [checked]="cohorteService.isChecked(hijo)">
+                        <a class="links"
+                            [routerLink]="['/results/', hijo.termino_preferido]">{{ hijo.termino_preferido }}
+                        </a>
+                    </mat-checkbox>
+                </li>
+            </ul>
+        </div>
     </div>
+
 </div>

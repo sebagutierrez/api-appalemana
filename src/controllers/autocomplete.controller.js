@@ -36,7 +36,7 @@ module.exports = {
 
                 query = query + endOfQuery;
 
-            } else if (arrayWords.length == 0) {
+            } else if (arrayWords.length == 1) {
 
                 query =
 
