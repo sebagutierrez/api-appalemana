@@ -12,6 +12,7 @@ const cohorteController = require('../controllers/cohorte.controller');
  */
 
 router.get('', cohorteController.getCohortes);
+router.get('/get', cohorteController.getCohorte);
 router.post('/new', cohorteController.postCohorte);
 router.delete('/delete', cohorteController.removeCohorte);
 router.patch('/patch', cohorteController.updateCohorte);

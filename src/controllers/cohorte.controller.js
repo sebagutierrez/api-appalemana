@@ -70,6 +70,46 @@ module.exports = {
         }
     },
 
+    getCohorte: async (req, res) => {
+        try {
+
+            cohorte = {};
+            conceptos = {};
+
+            await models.sequelize.query(
+
+                `SELECT * FROM cohorte 
+                WHERE id_cohorte = '${req.query.id_cohorte}';`,
+
+                {
+                    type: models.QueryTypes.SELECT
+                }
+            ).then(data => cohorte = data);
+
+            await models.sequelize.query(
+                `SELECT * FROM concepto
+                WHERE id_cohorte = '${req.query.id_cohorte}';`,
+
+                {
+                    type: models.QueryTypes.SELECT
+                }
+            ).then(data => conceptos = data);
+
+            return res.status(200).json({
+                data: {
+                    cohorte,
+                    conceptos
+                },
+                message: 'Cohortes obtenidas correctamente!',
+            });
+        } catch (error) {
+            return res.status(500).json({
+                data: {},
+                message: error.message,
+            });
+        }
+    },
+
     postCohorte: async (req, res) => {
         try {
             const nombreCohorte = req.body.nombre;

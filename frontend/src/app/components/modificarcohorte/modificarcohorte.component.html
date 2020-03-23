@@ -1,0 +1,17 @@
+<ng-template #loading>
+    <mat-progress-bar mode="query"></mat-progress-bar>
+</ng-template>
+
+<div class="wrapper" *ngIf="cohorteService.isCohorteLoaded; else loading">
+    <div class="modifyNombre">
+        <p>
+            Nombre cohorte
+        </p>
+
+        <input matInput value="{{ cohorteService.cohorteModify.data.cohorte[0].nombre_cohorte }}" autocomplete="off">
+    </div>
+
+    <div class="modifyConceptos">
+
+    </div>
+</div>

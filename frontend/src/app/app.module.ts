@@ -13,7 +13,7 @@ import { ResultadosComponent, DialogAgregarCohorteExistente } from './components
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { CohortesComponent } from './components/cohortes/cohortes.component';
 import { NuevacohorteComponent } from './components/nuevacohorte/nuevacohorte.component';
-
+import { ModificarcohorteComponent } from './components/modificarcohorte/modificarcohorte.component'
 
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -29,7 +29,7 @@ import { MatMenuModule } from '@angular/material/menu';
 
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { Ng2SearchPipeModule } from 'ng2-search-filter'
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @NgModule({
   declarations: [
@@ -40,6 +40,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter'
     NavbarComponent,
     CohortesComponent,
     NuevacohorteComponent,
+    ModificarcohorteComponent,
   ],
   imports: [
     BrowserModule,

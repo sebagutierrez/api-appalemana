@@ -15,7 +15,8 @@
             <span class="headerPipe">|</span>
             <p>conceptos ({{ cohorteService.getNumeroConceptos(cohorte.cohorte.id_cohorte) }})</p>
 
-            <fa-icon class="iconModify" [icon]="faPen" title="Modificar esta cohorte"></fa-icon>
+            <fa-icon class="iconModify" [icon]="faPen" title="Modificar esta cohorte"
+                (click)="navToModify(cohorte.cohorte.id_cohorte)"></fa-icon>
             <fa-icon class="iconRemove" [icon]="faTrash" title="Eliminar esta cohorte"
                 (click)="removeCohorte(cohorte.cohorte.id_cohorte)"></fa-icon>
         </div>

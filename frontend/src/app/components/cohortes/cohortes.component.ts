@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
 
 import { faPen } from '@fortawesome/free-solid-svg-icons';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
@@ -19,7 +21,8 @@ export class CohortesComponent implements OnInit {
   filterInput = "";
 
   constructor(
-    public cohorteService: CohortesService
+    public cohorteService: CohortesService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -32,6 +35,10 @@ export class CohortesComponent implements OnInit {
     if (window.confirm('¿Estás seguro que deseas eliminar esta cohorte?')) {
       this.cohorteService.removeCohorte(id_cohorte);
     }
+  }
+
+  navToModify(id_cohorte) {
+    this.router.navigateByUrl(`/cohortes/modify/${id_cohorte}`);
   }
 
 }

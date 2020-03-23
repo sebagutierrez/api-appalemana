@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 
 import { Resultado } from '../components/resultados/resultados.model';
 import { Cohortes } from '../components/cohortes/cohortes.model';
+import { Cohorte } from '../components/modificarcohorte/modificarcohorte.model'
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +22,10 @@ export class CohortesService {
 
   cohorteGet: Cohortes;
 
+  cohorteModify: Cohorte;
+
   isDataLoaded = false;
+  isCohorteLoaded = false;
 
 
   resultados: Resultado;
@@ -30,6 +34,8 @@ export class CohortesService {
     private http: HttpClient,
     private router: Router
   ) { }
+
+
 
   // Modifica cierta cohorte por la cohorte actual. Si existen conflictos, los omite (solamente agrega).
   updateCohorte(id_cohorte, cohorteActual) {
@@ -59,6 +65,18 @@ export class CohortesService {
         console.log(this.cohorteGet);
       }
     );
+  }
+
+  getCohorte(id_cohorte) {
+    this.http.get<Cohorte>('http://localhost:3000/cohortes/get', { params: { id_cohorte } })
+      .subscribe(
+        data => this.cohorteModify = data,
+        error => console.log(error),
+        () => {
+          console.log(this.cohorteModify);
+          this.isCohorteLoaded = true;
+        }
+      )
   }
 
   // Retorna el numero de conceptos para cierto id_cohorte dentro del objeto cohorteGet
