@@ -3,15 +3,41 @@
 </ng-template>
 
 <div class="wrapper" *ngIf="cohorteService.isCohorteLoaded; else loading">
-    <div class="modifyNombre">
-        <p>
-            Nombre cohorte
-        </p>
 
-        <input matInput value="{{ cohorteService.cohorteModify.data.cohorte[0].nombre_cohorte }}" autocomplete="off">
+    <p class="title">
+        Modificar cohorte existente
+    </p>
+
+    <div class="wrapper-top">
+
+        <hr>
+        <div class="modifyNombre">
+            <p class="nombreCohorte">
+                Nombre cohorte
+            </p>
+
+            <input matInput value="{{ cohorteService.cohorteModify.data.cohorte[0].nombre_cohorte }}" autocomplete="off"
+                [(ngModel)]="nombreCohorte">
+        </div>
+
+        <button mat-raised-button class="buttonModificarNombre" (click)="modifyNombre(nombreCohorte)">Modificar
+            nombre</button>
     </div>
 
-    <div class="modifyConceptos">
+    <div class="wrapper-bottom">
 
+        <div class="modifyConceptos">
+            <ul *ngFor="let concepto of cohorteService.cohorteModify.data.conceptos">
+                <mat-checkbox class="checkboxTermino" (change)="onChange($event, concepto)"
+                    [checked]="concepto.checked">
+                    <a class="links"
+                        [routerLink]="['/results/', concepto.termino_preferido]">{{ concepto.termino_preferido }}</a>
+                </mat-checkbox>
+            </ul>
+        </div>
+
+        <button mat-raised-button class="buttonModificarConceptos"
+            (click)="modifyConceptos(cohorteService.cohorteModify.data.conceptos)">Modificar conceptos</button>
     </div>
+
 </div>

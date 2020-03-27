@@ -1,0 +1,82 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+    padding: 2rem 2rem 2rem 3rem;
+    margin: 1rem;
+    margin-left: 33%;
+    width: 36%;
+    border-radius: 7px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.322);   
+    background-color: rgba(255, 255, 255, 0.644);
+}
+
+.wrapper-top {
+    margin-left: 40px;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    margin-right: 35px;
+    background-color: rgba(177, 177, 177, 0.459);
+    margin-bottom: 30px;
+}
+
+.title {
+    margin-left: 40px;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+input {
+    margin-top: -15px;
+    text-indent: 10px;
+    height: 30px;
+    width: 450px;
+    
+}
+
+input:focus {
+    outline: none;
+}
+
+.nombreCohorte {
+    /* font-weight: bold; */
+    font-size: 14px;
+}
+
+.modifyConceptos {
+    width: 95%;
+    margin-top: 20px;
+    max-height: 250px;
+    overflow-y: scroll;
+    position: relative;
+    align-items: flex-start;
+}
+
+button.buttonModificarNombre{
+    padding-right: 20px;
+    text-align: center;
+    margin-top: 10px;
+    width: 165px;
+    height: 35px;
+    color: white;
+    font-weight: bold;
+    background-color: rgb(0, 180, 9);
+    border: 1px solid rgb(0, 180, 9);
+    box-shadow: none;
+}
+
+button.buttonModificarConceptos {
+    margin-left: 40px;
+    margin-top: 10px;
+    width: 180px;
+    margin-right: 10px;
+    height: 2.3rem;
+    color: white;
+    font-weight: bold;
+    background-color: rgb(0, 180, 9);
+    border: 1px solid rgb(0, 180, 9);
+    box-shadow: none;
+}

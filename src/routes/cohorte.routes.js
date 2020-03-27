@@ -16,6 +16,8 @@ router.get('/get', cohorteController.getCohorte);
 router.post('/new', cohorteController.postCohorte);
 router.delete('/delete', cohorteController.removeCohorte);
 router.patch('/patch', cohorteController.updateCohorte);
+router.patch('/modifyNombre', cohorteController.modifyNombreCohorte);
+router.patch('/modifyConceptos', cohorteController.modifyConceptosCohorte);
 
 
 module.exports = router;

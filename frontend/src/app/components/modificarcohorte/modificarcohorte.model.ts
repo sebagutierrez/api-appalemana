@@ -7,6 +7,7 @@ export interface Concepto {
     concept_id_HIBA: bigint,
     termino_preferido: string,
     id_cohorte: number,
+    checked: boolean
 }
 
 export interface Cohorte {

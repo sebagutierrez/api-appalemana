@@ -88,7 +88,8 @@ module.exports = {
 
             await models.sequelize.query(
                 `SELECT * FROM concepto
-                WHERE id_cohorte = '${req.query.id_cohorte}';`,
+                WHERE id_cohorte = '${req.query.id_cohorte}'
+                ORDER BY termino_preferido ASC;`,
 
                 {
                     type: models.QueryTypes.SELECT
@@ -100,7 +101,7 @@ module.exports = {
                     cohorte,
                     conceptos
                 },
-                message: 'Cohortes obtenidas correctamente!',
+                message: 'Cohorte obtenida correctamente!',
             });
         } catch (error) {
             return res.status(500).json({
@@ -172,7 +173,11 @@ module.exports = {
                 await models.sequelize.query(
                     `INSERT INTO concepto (concept_id_hiba, termino_preferido, id_cohorte)
                     VALUES ('${termino.concept_id_HIBA}', '${termino.termino_preferido}', '${req.body.id_cohorte}')
-                    ON CONFLICT DO NOTHING;`
+                    ON CONFLICT DO NOTHING;`,
+
+                    {
+                        type: models.QueryTypes.UPDATE
+                    }
                 )
                 console.log(termino);
             });
@@ -180,6 +185,52 @@ module.exports = {
             return res.status(201).json({ message: 'Cohorte modificada exitosamente!' });
         } catch (error) {
             return res.status(500).json({ error: error.message });
+        }
+    },
+
+    modifyNombreCohorte: async (req, res) => {
+        try {
+            console.log(req.body);
+
+            await models.sequelize.query(
+                `UPDATE cohorte 
+                SET nombre_cohorte = '${req.body.nombreCohorte}' 
+                WHERE id_cohorte = '${req.body.id_cohorte}';`,
+
+                {
+                    type: models.QueryTypes.UPDATE
+                }
+            );
+
+            return res.status(201).json({ message: 'Nombre de cohorte modificado exitosamente!' });
+        } catch (err) {
+            return res.status(500).json({ error: err.message })
+        }
+    },
+
+    modifyConceptosCohorte: async (req, res) => {
+        try {
+
+            req.body.arrayConceptos.forEach(async concepto => {
+
+                if (concepto.checked == false) {
+                    await models.sequelize.query(
+                        `DELETE FROM concepto
+                        WHERE id_cohorte = '${concepto.id_cohorte}'
+                        AND concept_id_HIBA = '${concepto.concept_id_hiba}';`,
+
+                        {
+                            type: models.QueryTypes.DELETE
+                        }
+                    );
+
+                    console.log("concepto removed --> " + concepto.termino_preferido);
+                }
+            });
+
+            return res.status(201).json({ message: 'Conceptos de la cohorte modificados exitosamente!' });
+        } catch (err) {
+            return res.status(500).json({ error: err.message });
         }
     }
 }

@@ -35,7 +35,13 @@ export class CohortesService {
     private router: Router
   ) { }
 
+  modifyNombre(id_cohorte, nombreCohorte) {
+    return this.http.patch('http://localhost:3000/cohortes/modifyNombre', { id_cohorte, nombreCohorte });
+  }
 
+  modifyConceptos(arrayConceptos) {
+    return this.http.patch('http://localhost:3000/cohortes/modifyConceptos', { arrayConceptos });
+  }
 
   // Modifica cierta cohorte por la cohorte actual. Si existen conflictos, los omite (solamente agrega).
   updateCohorte(id_cohorte, cohorteActual) {
@@ -68,15 +74,7 @@ export class CohortesService {
   }
 
   getCohorte(id_cohorte) {
-    this.http.get<Cohorte>('http://localhost:3000/cohortes/get', { params: { id_cohorte } })
-      .subscribe(
-        data => this.cohorteModify = data,
-        error => console.log(error),
-        () => {
-          console.log(this.cohorteModify);
-          this.isCohorteLoaded = true;
-        }
-      )
+    return this.http.get<Cohorte>('http://localhost:3000/cohortes/get', { params: { id_cohorte } });
   }
 
   // Retorna el numero de conceptos para cierto id_cohorte dentro del objeto cohorteGet
@@ -210,5 +208,13 @@ export class CohortesService {
       console.log(element);
 
     });
+  }
+
+  setAllAsChecked(array) {
+    array.forEach(termino => {
+      termino.checked = true;
+    });
+
+    console.log(array);
   }
 }

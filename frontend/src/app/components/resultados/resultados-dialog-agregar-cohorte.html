@@ -13,7 +13,8 @@
 
             <mat-accordion>
                 <div class="cohorte"
-                    *ngFor="let cohorte of cohorteService.cohorteGet.data.cohortes | filter:filterInput">
+                    *ngFor="let cohorte of cohorteService.cohorteGet.data.cohortes | filter:filterInput"
+                    [@.disabled]="disableAnimation">
 
                     <mat-expansion-panel>
                         <mat-expansion-panel-header>

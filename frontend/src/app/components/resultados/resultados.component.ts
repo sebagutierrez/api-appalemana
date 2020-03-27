@@ -81,6 +81,8 @@ export class ResultadosComponent implements OnInit {
 
 }
 
+// Dialog agregar a cohorte existente
+
 @Component({
   selector: 'dialog-agregar-cohorte',
   templateUrl: 'resultados-dialog-agregar-cohorte.html',
@@ -90,11 +92,17 @@ export class DialogAgregarCohorteExistente implements OnInit {
 
   filterInput = "";
 
+  disableAnimation = true;
+
   constructor(public cohorteService: CohortesService) { }
 
   ngOnInit(): void {
     this.filterInput = "";
     this.cohorteService.getCohortes();
+  }
+
+  ngAfterViewInit(): void {
+    setTimeout(() => this.disableAnimation = false);
   }
 
 }
